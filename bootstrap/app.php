@@ -10,17 +10,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function ($middleware) {
+   ->withMiddleware(function (Middleware $middleware) {
+
+    $middleware->trustProxies(at: '*');
 
     $middleware->alias([
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
-    ]);
-
-})
-->withMiddleware(function ($middleware) {
-
-    $middleware->alias([
-        'teacher'=>TeacherMiddleware::class,
+        'teacher' => TeacherMiddleware::class,
     ]);
 
 })

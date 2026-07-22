@@ -57,10 +57,10 @@ Route::get('/', function () {
 //     return redirect('/login');
 // });
 
-Route::get('/login',[AuthenticatedSessionController::class,'create'])
-    ->name('login');
+// Route::get('/login',[AuthenticatedSessionController::class,'create'])
+//     ->name('login');
 
-Route::post('/login',[AuthenticatedSessionController::class,'store']);
+// Route::post('/login',[AuthenticatedSessionController::class,'store']);
 // });
 
 Route::post('/logout', [AuthenticatedSessionController::class,'destroy'])
@@ -456,4 +456,4 @@ Route::put('/profile', [StudentProfileController::class, 'update'])
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
