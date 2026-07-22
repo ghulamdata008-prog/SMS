@@ -1,0 +1,824 @@
+/* ===========================
+   PREMIUM TEACHER SIDEBAR
+=========================== */
+
+
+.teacher-sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 280px;
+
+    height: 100vh;
+
+    background:
+        linear-gradient(180deg,
+            #111827,
+            #020617);
+
+    color: white;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    z-index: 1000;
+
+    box-shadow:
+        10px 0 30px rgba(0, 0, 0, .15);
+
+}
+
+
+
+
+/* Logo */
+
+
+.teacher-logo {
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, .08);
+
+    margin-bottom: 30px;
+
+}
+
+
+
+.teacher-logo a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+
+
+.logo-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+
+    background:
+        linear-gradient(135deg,
+            #2563eb,
+            #60a5fa);
+
+}
+
+
+
+.teacher-logo h4 {
+
+    margin: 0;
+
+    font-weight: 700;
+
+}
+
+
+
+.teacher-logo small {
+
+    color: #94a3b8;
+
+}
+
+
+
+
+
+/* Menu */
+
+
+.teacher-menu {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+
+
+.teacher-menu li {
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.teacher-menu a {
+
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+
+    padding: 14px 18px;
+
+
+    color: #cbd5e1;
+
+
+    text-decoration: none;
+
+
+    border-radius: 16px;
+
+
+    transition: .3s;
+
+
+    font-weight: 500;
+
+
+}
+
+
+
+.teacher-menu a i {
+
+
+    font-size: 20px;
+
+    width: 25px;
+
+    text-align: center;
+
+
+}
+
+
+
+.teacher-menu a:hover {
+
+
+    background:
+        linear-gradient(135deg,
+            rgba(37, 99, 235, .8),
+            rgba(96, 165, 250, .5));
+
+
+    color: white;
+
+
+    transform:
+        translateX(8px);
+
+
+}
+
+
+
+
+
+.teacher-menu a:hover i {
+
+    transform: scale(1.1);
+
+}
+
+
+
+
+/* Main Alignment */
+
+
+.teacher-main {
+
+
+    margin-left: 280px;
+
+
+    width:
+        calc(100% - 280px);
+
+
+    min-height: 100vh;
+
+
+    background: #f8fafc;
+
+
+}
+
+
+
+
+
+
+.teacher-content {
+
+
+    padding: 35px;
+
+
+}
+
+
+
+
+
+
+/* Scrollbar */
+
+
+.teacher-sidebar::-webkit-scrollbar {
+
+    width: 5px;
+
+}
+
+
+.teacher-sidebar::-webkit-scrollbar-thumb {
+
+    background: #334155;
+
+    border-radius: 20px;
+
+}
+
+/* Main */
+
+.teacher-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+    background: #f4f6fb;
+}
+
+.teacher-dashboard {
+    padding: 10px;
+}
+
+
+
+/* Hero */
+
+
+.teacher-hero {
+
+    background:
+        linear-gradient(135deg,
+            #1e3a8a,
+            #2563eb);
+
+    color: white;
+
+    border-radius: 30px;
+
+    padding: 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 0 20px 40px rgba(37, 99, 235, .25);
+
+}
+
+
+
+.dashboard-badge {
+
+    background: rgba(255, 255, 255, .15);
+
+    padding: 8px 16px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+
+}
+
+
+
+.teacher-hero h1 {
+
+    margin-top: 20px;
+
+    font-weight: 800;
+
+}
+
+
+
+.teacher-hero h1 span {
+
+    color: #bfdbfe;
+
+}
+
+
+
+.hero-teacher-icon {
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, .2);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 50px;
+
+}
+
+
+
+
+
+
+/* Cards */
+
+
+.teacher-stat-card {
+
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .1);
+
+    transition: .3s;
+
+}
+
+
+
+.teacher-stat-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+
+.teacher-stat-card p {
+
+    margin: 0;
+
+    opacity: .9;
+
+}
+
+
+
+.teacher-stat-card h2 {
+
+    font-size: 40px;
+
+    font-weight: 800;
+
+    margin: 5px 0;
+
+}
+
+
+
+
+
+.stat-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, .2);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+}
+
+
+
+
+.blue-card {
+
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+
+}
+
+
+.green-card {
+
+    background: linear-gradient(135deg, #059669, #34d399);
+
+}
+
+
+.orange-card {
+
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+
+}
+
+
+
+
+
+/* Boxes */
+
+
+.teacher-box {
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .08);
+
+}
+
+
+
+.box-header {
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.box-header h5 {
+
+    font-weight: 700;
+
+}
+
+
+
+
+.overview-content {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.overview-content div {
+
+    background: #f8fafc;
+
+    padding: 15px 20px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    font-weight: 600;
+
+}
+
+
+
+.overview-content i {
+
+    color: #2563eb;
+
+    font-size: 22px;
+
+}
+
+/* ======================
+   MY CLASSES UI
+====================== */
+
+
+.page-badge {
+
+    background: #dbeafe;
+
+    color: #2563eb;
+
+    padding: 8px 16px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+
+
+
+
+.classes-card {
+
+    background: white;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .08);
+
+}
+
+
+
+
+
+.classes-header {
+
+    padding: 25px;
+
+    background:
+        linear-gradient(135deg,
+            #1e3a8a,
+            #2563eb);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+
+
+.header-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, .2);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+}
+
+
+
+
+
+.classes-header h5 {
+
+    margin: 0;
+
+    font-weight: 700;
+
+}
+
+
+
+
+
+.classes-table thead {
+
+    background: #f8fafc;
+
+}
+
+
+
+.classes-table th {
+
+    padding: 18px;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+
+
+.classes-table td {
+
+    padding: 18px;
+
+}
+
+
+
+
+
+.classes-table tbody tr {
+
+    transition: .3s;
+
+}
+
+
+
+.classes-table tbody tr:hover {
+
+    background: #f8fafc;
+
+    transform: scale(1.01);
+
+}
+
+
+
+
+
+.class-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-weight: 700;
+
+}
+
+
+
+.class-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 14px;
+
+    background: #dbeafe;
+
+    color: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+
+
+
+.section-badge,
+.subject-badge {
+
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-weight: 600;
+
+}
+
+
+
+.section-badge {
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+}
+
+
+
+.subject-badge {
+
+    background: #fef3c7;
+
+    color: #b45309;
+
+}
+
+
+
+
+
+.empty-state {
+
+    text-align: center;
+
+    padding: 50px;
+
+    color: #64748b;
+
+}
+
+
+
+.empty-state i {
+
+    font-size: 45px;
+
+    display: block;
+
+    margin-bottom: 15px;
+
+}
+
+/* Content */
+
+.teacher-content {
+    padding: 30px;
+}
+
+/* Card */
+
+.card {
+    border-radius: 15px;
+}
+
+.table {
+    margin-bottom: 0;
+}

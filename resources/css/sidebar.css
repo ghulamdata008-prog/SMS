@@ -1,0 +1,391 @@
+.sidebar {
+
+    width: 280px;
+    height: 100vh;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(180deg, #0b1220, #111827, #161f35);
+
+    box-shadow:
+        8px 0 40px rgba(0, 0, 0, .35);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sidebar */
+
+.sidebar {
+
+    width: 260px;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    height: 100vh;
+
+    transition: .3s ease;
+
+}
+
+
+
+/* When sidebar collapsed */
+
+.sidebar.collapsed {
+
+    width: 80px;
+
+}
+
+
+
+/* Content */
+
+.main-content {
+
+    margin-left: 260px;
+
+    transition: .3s ease;
+
+}
+
+
+
+.main-content.expanded {
+
+    margin-left: 80px;
+
+}
+
+
+
+/* Hide text when collapsed */
+
+.sidebar.collapsed .menu-text {
+
+    display: none;
+
+}
+
+
+
+.sidebar.collapsed .logo-text {
+
+    display: none;
+
+}
+
+
+
+
+.sidebar-toggle-btn {
+
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+.sidebar-toggle-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+
+.logo {
+
+    padding: 28px 22px 20px;
+
+}
+
+.brand {
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    text-decoration: none;
+}
+
+.brand-icon {
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(135deg, #3b82f6, #7c3aed);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+
+    color: white;
+
+    box-shadow:
+        0 12px 30px rgba(59, 130, 246, .35);
+
+    transition: .4s;
+}
+
+.brand:hover .brand-icon {
+
+    transform: rotate(-8deg) scale(1.08);
+
+}
+
+.brand-text h5 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+.brand-text small {
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+/* .admin-info {
+
+    margin: 0 20px 25px;
+
+    padding: 18px;
+
+    border-radius: 22px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    background: rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    transition: .4s;
+}
+
+.admin-info:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(255, 255, 255, .08);
+
+}
+
+.admin-icon {
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 22px;
+
+    position: relative;
+
+    box-shadow:
+        0 10px 25px rgba(59, 130, 246, .3);
+
+}
+
+.admin-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 3px;
+    bottom: 3px;
+
+    width: 12px;
+    height: 12px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    border: 2px solid white;
+
+} */
+
+.sidebar-menu {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 10px 16px;
+
+    flex: 1;
+
+}
+
+.sidebar-menu li {
+
+    margin-bottom: 10px;
+
+}
+
+.sidebar-menu a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 15px 18px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: #d1d5db;
+
+    font-weight: 600;
+
+    transition: .35s;
+
+    position: relative;
+
+}
+
+.sidebar-menu a:hover {
+
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+    color: white;
+
+    transform: translateX(8px);
+
+    box-shadow:
+        0 15px 30px rgba(59, 130, 246, .25);
+
+}
+
+.sidebar-menu a.active {
+
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px rgba(59, 130, 246, .30);
+
+}
+
+.sidebar-menu a.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -16px;
+
+    width: 5px;
+
+    height: 70%;
+
+    border-radius: 10px;
+
+    background: white;
+
+}
+
+.sidebar-menu i {
+
+    font-size: 20px;
+
+    transition: .35s;
+
+}
+
+.sidebar-menu a:hover i {
+
+    transform: scale(1.25) rotate(-10deg);
+
+}
+
+.logout {
+
+    padding: 20px;
+
+}
+
+.logout button {
+
+    border: none;
+
+    border-radius: 18px;
+
+    height: 56px;
+
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+
+    font-weight: 600;
+
+    transition: .35s;
+
+}
+
+.logout button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 30px rgba(239, 68, 68, .35);
+
+}

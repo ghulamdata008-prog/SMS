@@ -1,0 +1,22 @@
+@import './sidebar.css';
+@import './dashboard.css';
+@import './students.css';
+@import './teachers.css';
+@import './classes.css';
+@import './sections.css';
+@import './student.css';
+@import './subjects.css';
+@import './navbar.css';
+@import './admin.css';
+@import './responsive.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.teacher-assignment select,
+.teacher-assignment select option,
+select.form-control option {
+    color: #000 !important;
+    background-color: #fff !important;
+}

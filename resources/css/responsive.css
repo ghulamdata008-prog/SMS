@@ -1,0 +1,77 @@
+/* ===========================================
+   Responsive CSS
+=========================================== */
+
+@media (max-width:991px) {
+
+    .sidebar {
+
+        left: -270px;
+
+    }
+
+    .sidebar.active {
+
+        left: 0;
+
+    }
+
+    .main {
+
+        margin-left: 0;
+
+    }
+
+    .content {
+
+        padding: 20px;
+
+    }
+
+}
+
+@media (max-width:768px) {
+
+    .navbar-custom {
+
+        padding: 15px;
+
+    }
+
+    .dashboard-card {
+
+        margin-bottom: 20px;
+
+    }
+
+    .content {
+
+        padding: 15px;
+
+    }
+
+}
+
+@media (max-width:576px) {
+
+    .logo {
+
+        font-size: 20px;
+
+    }
+
+    .card-number {
+
+        font-size: 22px;
+
+    }
+
+    .dashboard-icon {
+
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+
+    }
+
+}
