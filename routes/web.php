@@ -47,15 +47,16 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 // Route::middleware(['auth'])->group(function () {
 
     
-// Route::get('/', function () {
-//     return redirect('/login');
-// });
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 // Route::get('/login',[AuthenticatedSessionController::class,'create'])
 //     ->name('login');
