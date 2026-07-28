@@ -1,151 +1,100 @@
 <div class="student-sidebar shadow-lg">
 
-
-    <!-- Logo -->
+    <!-- Header -->
     <div class="student-sidebar-header">
 
         <div class="student-logo">
-
             <i class="bi bi-mortarboard-fill"></i>
-
         </div>
 
+        <h4>School MS</h4>
 
-        <h4>
-            School MS
-        </h4>
-
-
-        <span>
-            Student Panel
-        </span>
-
+        <small>Student Panel</small>
 
     </div>
-
-
-
 
     <!-- Menu -->
 
     <ul class="student-menu">
 
-
         <li>
-
             <a href="{{ route('student.dashboard') }}"
-               class="active">
+               class="{{ request()->routeIs('student.dashboard') ? 'active' : '' }}">
 
                 <i class="bi bi-speedometer2"></i>
 
-                <span>
-                    Dashboard
-                </span>
+                <span>Dashboard</span>
 
             </a>
-
         </li>
 
-
-
-
         <li>
-
-            <a href="{{ route('student.attendance') }}">
+            <a href="{{ route('student.attendance') }}"
+               class="{{ request()->routeIs('student.attendance') ? 'active' : '' }}">
 
                 <i class="bi bi-calendar-check"></i>
 
-                <span>
-                    My Attendance
-                </span>
+                <span>My Attendance</span>
 
             </a>
-
         </li>
 
-
-
-
         <li>
-
-            <a href="{{ route('student.subjects') }}">
+            <a href="{{ route('student.subjects') }}"
+               class="{{ request()->routeIs('student.subjects') ? 'active' : '' }}">
 
                 <i class="bi bi-book"></i>
 
-                <span>
-                    My Subjects
-                </span>
+                <span>My Subjects</span>
 
             </a>
-
         </li>
 
-
-
-
         <li>
-
-            <a href="{{ route('student.results') }}">
+            <a href="{{ route('student.results') }}"
+               class="{{ request()->routeIs('student.results') ? 'active' : '' }}">
 
                 <i class="bi bi-award-fill"></i>
 
-                <span>
-                    My Results
-                </span>
+                <span>My Results</span>
 
             </a>
-
         </li>
 
-
-
-
         <li>
-
-            <a href="{{ route('student.profile') }}">
+            <a href="{{ route('student.profile') }}"
+               class="{{ request()->routeIs('student.profile') ? 'active' : '' }}">
 
                 <i class="bi bi-person-circle"></i>
 
-                <span>
-                    My Profile
-                </span>
+                <span>My Profile</span>
 
             </a>
-
         </li>
-
-
 
     </ul>
 
-
-
-
-
     <!-- Logout -->
 
-<div class="student-logout">
+    <div class="student-logout">
 
-    <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}">
 
-        @csrf
+            @csrf
 
-        <button type="submit" class="logout-button">
+            <button type="submit" class="logout-button">
 
-            <i class="bi bi-box-arrow-right"></i>
+                <i class="bi bi-box-arrow-right"></i>
 
-            <span>
-                Logout
-            </span>
+                <span>Logout</span>
 
-        </button>
+            </button>
 
-    </form>
+        </form>
+
+    </div>
 
 </div>
-</div>
-
-
 
 
 
@@ -154,151 +103,118 @@
 
 .student-sidebar{
 
-
     position:fixed;
-
+    top:0;
     left:0;
 
-    top:0;
-
-    width:270px;
-
+    width:280px;
     height:100vh;
 
-    background:
-
-    linear-gradient(
-        180deg,
-        #0f172a,
-        #1e3a8a
-    );
-
-
-    color:white;
-
-    padding:25px 15px;
+    background:linear-gradient(180deg,#0f172a,#1e3a8a);
 
     display:flex;
-
     flex-direction:column;
+
+    color:#fff;
+
+    overflow-y:auto;
 
     z-index:1000;
 
+    padding:20px;
+
+    box-shadow:10px 0 35px rgba(0,0,0,.25);
 
 }
 
+.student-sidebar::-webkit-scrollbar{
 
+    width:6px;
 
+}
+
+.student-sidebar::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+    border-radius:20px;
+
+}
+
+/* Header */
 
 .student-sidebar-header{
 
-
     text-align:center;
 
-    padding-bottom:25px;
+    padding-bottom:28px;
 
-    border-bottom:
+    margin-bottom:25px;
 
-    1px solid rgba(255,255,255,.15);
-
+    border-bottom:1px solid rgba(255,255,255,.12);
 
 }
-
-
-
 
 .student-logo{
 
-
-    width:75px;
-
-    height:75px;
+    width:82px;
+    height:82px;
 
     margin:auto;
 
-    display:flex;
+    border-radius:24px;
 
+    display:flex;
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
+    background:linear-gradient(135deg,#3b82f6,#60a5fa);
 
+    font-size:38px;
 
-    border-radius:25px;
-
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #3b82f6,
-        #60a5fa
-    );
-
-
-    font-size:35px;
-
-
-    box-shadow:
-
-    0 15px 30px rgba(0,0,0,.3);
-
+    box-shadow:0 20px 35px rgba(59,130,246,.35);
 
 }
-
-
-
 
 .student-sidebar-header h4{
 
+    margin-top:18px;
+    margin-bottom:6px;
 
-    margin-top:15px;
+    font-size:24px;
 
     font-weight:800;
 
-
 }
 
-
-
-.student-sidebar-header span{
-
+.student-sidebar-header small{
 
     color:#cbd5e1;
 
     font-size:14px;
 
-
 }
 
-
-
+/* Menu */
 
 .student-menu{
 
-
     list-style:none;
 
-    padding:20px 0;
+    padding:0;
 
     margin:0;
 
+    flex:1;
+
 }
-
-
 
 .student-menu li{
 
-
     margin-bottom:10px;
-
 
 }
 
-
-
-
 .student-menu a{
-
 
     display:flex;
 
@@ -306,124 +222,132 @@
 
     gap:15px;
 
-
-    padding:14px 18px;
-
+    text-decoration:none;
 
     color:#e2e8f0;
 
-
-    text-decoration:none;
-
+    padding:15px 18px;
 
     border-radius:16px;
-
 
     font-weight:600;
 
-
-    transition:.3s;
-
+    transition:.35s;
 
 }
-
-
 
 .student-menu a i{
 
+    width:24px;
+
+    text-align:center;
 
     font-size:20px;
 
-
 }
 
+.student-menu a:hover{
 
+    background:rgba(255,255,255,.10);
 
-
-
-.student-menu a:hover,
-.student-menu a.active{
-
-
-    background:
-
-    rgba(255,255,255,.15);
-
-
-    color:white;
-
+    color:#fff;
 
     transform:translateX(6px);
 
+}
+
+.student-menu a.active{
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    color:#fff;
+
+    box-shadow:0 12px 25px rgba(37,99,235,.35);
 
 }
 
-
-
-
+/* Logout */
 
 .student-logout{
 
-
     margin-top:auto;
 
-    padding:15px;
+    padding-top:20px;
 
+    border-top:1px solid rgba(255,255,255,.12);
 
 }
 
-
-
-.student-logout button{
-
+.logout-button{
 
     width:100%;
 
-
-    padding:14px;
-
-
     border:none;
-
 
     border-radius:16px;
 
+    padding:15px 18px;
 
-    background:
+    display:flex;
 
-    linear-gradient(
-        135deg,
-        #ef4444,
-        #dc2626
-    );
+    align-items:center;
 
+    justify-content:center;
 
-    color:white;
+    gap:12px;
 
+    font-size:16px;
 
     font-weight:700;
 
+    color:#fff;
 
-    transition:.3s;
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
+    transition:.35s;
 
 }
 
+.logout-button i{
 
+    font-size:20px;
 
-.student-logout button:hover{
+}
 
+.logout-button:hover{
 
     transform:translateY(-3px);
 
-
-    box-shadow:
-
-    0 15px 25px rgba(239,68,68,.35);
-
+    box-shadow:0 15px 30px rgba(239,68,68,.35);
 
 }
 
+/* Responsive */
 
+@media(max-width:991px){
+
+    .student-sidebar{
+
+        width:260px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .student-sidebar{
+
+        transform:translateX(-100%);
+
+    }
+
+    .student-sidebar.show{
+
+        transform:translateX(0);
+
+    }
+
+}
 
 </style>
