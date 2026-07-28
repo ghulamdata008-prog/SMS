@@ -9,34 +9,36 @@ use App\Models\Mark;
 
 class StudentDashboardController extends Controller
 {
-    public function index()
-    {
-        $student = Student::where('user_id', auth()->id())->firstOrFail();
+   public function index()
+{
+    $student = Student::where('user_id', auth()->id())->firstOrFail();
 
-        // Total Subjects
-        $subjects = TeacherSubject::where('school_class_id', $student->class_id)
-            ->where('section_id', $student->section_id)
-            ->count();
+    // Total Subjects
+    $subjects = TeacherSubject::where('school_class_id', $student->class_id)
+        ->where('section_id', $student->section_id)
+        ->count();
 
-        // Attendance
-        $totalAttendance = Attendance::where('student_id', $student->id)->count();
+    // Attendance Records
+    $attendance = Attendance::where('student_id', $student->id)->get();
 
-        $presentAttendance = Attendance::where('student_id', $student->id)
-            ->where('status', 'Present')
-            ->count();
+    $totalAttendance = $attendance->count();
 
-        $attendancePercentage = $totalAttendance > 0
-            ? round(($presentAttendance / $totalAttendance) * 100)
-            : 0;
+    $presentAttendance = $attendance->filter(function ($item) {
+        return strtolower(trim($item->status)) == 'present';
+    })->count();
 
-        // Total Results
-        $marks = Mark::where('student_id', $student->id)->count();
+    $attendancePercentage = $totalAttendance > 0
+        ? round(($presentAttendance * 100) / $totalAttendance)
+        : 0;
 
-        return view('student.dashboard', compact(
-            'student',
-            'subjects',
-            'attendancePercentage',
-            'marks'
-        ));
-    }
+    // Total Results
+    $marks = Mark::where('student_id', $student->id)->count();
+
+    return view('student.dashboard', compact(
+        'student',
+        'subjects',
+        'attendancePercentage',
+        'marks'
+    ));
+}
 }
