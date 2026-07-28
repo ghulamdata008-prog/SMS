@@ -21,16 +21,15 @@ class StudentDashboardController extends Controller
     // Attendance Records
     $attendance = Attendance::where('student_id', $student->id)->get();
 
-    $totalAttendance = $attendance->count();
+$totalAttendance = $attendance->count();
 
-    $presentAttendance = $attendance->filter(function ($item) {
-        return strtolower(trim($item->status)) == 'present';
-    })->count();
+$presentAttendance = $attendance->filter(function ($row) {
+    return strtolower(trim($row->status)) === 'present';
+})->count();
 
-    $attendancePercentage = $totalAttendance > 0
-        ? round(($presentAttendance * 100) / $totalAttendance)
-        : 0;
-
+$attendancePercentage = $totalAttendance > 0
+    ? round(($presentAttendance * 100) / $totalAttendance)
+    : 0;
     // Total Results
     $marks = Mark::where('student_id', $student->id)->count();
 
