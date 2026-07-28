@@ -83,4 +83,12 @@ class StudentPaymentController extends Controller
 
             ->with('success','Payment Completed Successfully.');
     }
+    public function destroy($id)
+{
+    $payment = Payment::findOrFail($id);
+
+    $payment->delete();
+
+    return redirect()->back()->with('success', 'Payment deleted successfully.');
+}
 }

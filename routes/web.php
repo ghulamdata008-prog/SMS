@@ -488,6 +488,8 @@ Route::get('/payment-history', [StudentFeeController::class, 'history'])
   Route::get('/fees/history',
         [StudentFeeController::class,'history'])
         ->name('fees.history');
+         Route::delete('/payment/{payment}', [StudentPaymentController::class, 'destroy'])
+        ->name('payment.delete');
     Route::get('/profile', [StudentProfileController::class, 'index'])
     ->name('profile');
 
