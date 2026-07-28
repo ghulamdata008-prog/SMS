@@ -40,6 +40,7 @@ use App\Http\Controllers\Student\StudentResultController;
 use App\Http\Controllers\Student\StudentProfileController;
 use App\Http\Controllers\Student\StudentAttendanceController ;
 use App\Http\Controllers\Student\StudentFeeController;
+use App\Http\Controllers\Student\StudentPaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -462,9 +463,26 @@ Route::get('/subjects', [StudentSubjectController::class, 'index'])
 Route::post('/fees/pay/{fee}',
     [StudentFeeController::class,'pay'])
     ->name('fees.pay');
+Route::get('/stripe/{payment}',
+    [StudentStripeController::class,'checkout'])
+    ->name('stripe.checkout');
 
+Route::get('/paypal/{payment}',
+    [StudentPayPalController::class,'checkout'])
+    ->name('paypal.checkout');
+
+Route::get('/monnify/{payment}',
+    [StudentMonnifyController::class,'checkout'])
+    ->name('monnify.checkout');
 Route::get('/payment-history', [StudentFeeController::class, 'history'])
     ->name('payment.history');
+    Route::get('/payment-success/{payment}',
+    [StudentPaymentController::class,'success'])
+    ->name('payment.success');
+
+Route::get('/fees/history',
+    [StudentFeeController::class,'history'])
+    ->name('fees.history');
     Route::get('/profile', [StudentProfileController::class, 'index'])
     ->name('profile');
 
