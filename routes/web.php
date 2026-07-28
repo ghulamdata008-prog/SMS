@@ -409,6 +409,10 @@ Route::post('/profile/password', [TeacherProfileController::class,'password'])
 
     Route::get('/student/login',[StudentAuthController::class,'login'])
     ->name('student.login');
+    Route::post('/student/login', [StudentAuthController::class, 'authenticate'])
+    ->name('student.login.submit');
+
+
 Route::post('/logout', function(){
 
     Auth::logout();
