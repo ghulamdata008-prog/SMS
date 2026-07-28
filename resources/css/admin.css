@@ -44,11 +44,7 @@ ul {
     list-style: none;
 }
 
-.wrapper {
 
-    display: flex;
-
-}
 
 .sidebar {
 
@@ -63,12 +59,7 @@ ul {
 
 }
 
-.main {
 
-    margin-left: 270px;
-    width: 100%;
-
-}
 
 .navbar-custom {
 
@@ -82,14 +73,9 @@ ul {
 
 }
 
-.content {
-
-    padding: 30px;
-
-}
 
 .footer {
-
+    margin-top: auto;
     background: #fff;
     border-top: 1px solid var(--border);
     padding: 20px;
