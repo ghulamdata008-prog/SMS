@@ -41,6 +41,9 @@ use App\Http\Controllers\Student\StudentProfileController;
 use App\Http\Controllers\Student\StudentAttendanceController ;
 use App\Http\Controllers\Student\StudentFeeController;
 use App\Http\Controllers\Student\StudentPaymentController;
+use App\Http\Controllers\Student\StudentStripeController;
+use App\Http\Controllers\Student\StudentPayPalController;
+use App\Http\Controllers\Student\StudentMonnifyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -467,9 +470,11 @@ Route::get('/stripe/{payment}',
     [StudentStripeController::class,'checkout'])
     ->name('stripe.checkout');
 
+
 Route::get('/paypal/{payment}',
     [StudentPayPalController::class,'checkout'])
     ->name('paypal.checkout');
+
 
 Route::get('/monnify/{payment}',
     [StudentMonnifyController::class,'checkout'])
