@@ -39,6 +39,7 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\Student\StudentResultController;
 use App\Http\Controllers\Student\StudentProfileController;
 use App\Http\Controllers\Student\StudentAttendanceController ;
+use App\Http\Controllers\Student\StudentFeeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -453,6 +454,17 @@ Route::get('/subjects', [StudentSubjectController::class, 'index'])
 
     Route::get('/results', [StudentResultController::class, 'index'])
     ->name('results');
+    Route::get('/fees', [StudentFeeController::class, 'index'])
+    ->name('fees.index');
+    Route::get('/fees/{fee}', [StudentFeeController::class, 'show'])
+    ->name('fees.show');
+
+Route::post('/fees/pay/{fee}',
+    [StudentFeeController::class,'pay'])
+    ->name('fees.pay');
+
+Route::get('/payment-history', [StudentFeeController::class, 'history'])
+    ->name('payment.history');
     Route::get('/profile', [StudentProfileController::class, 'index'])
     ->name('profile');
 

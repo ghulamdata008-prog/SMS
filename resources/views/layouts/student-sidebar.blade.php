@@ -71,7 +71,27 @@
 
             </a>
         </li>
+<li class="nav-item">
+    <a href="{{ route('student.fees.index') }}"
+       class="nav-link {{ request()->routeIs('student.fees.*') ? 'active' : '' }}">
 
+        <i class="bi bi-cash-stack"></i>
+
+        <span>My Fees</span>
+
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('student.payment.history') }}"
+       class="nav-link">
+
+        <i class="bi bi-credit-card"></i>
+
+        <span>Payment History</span>
+
+    </a>
+</li>
     </ul>
 
     <!-- Logout -->
