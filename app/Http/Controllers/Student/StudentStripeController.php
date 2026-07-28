@@ -9,23 +9,11 @@ use Illuminate\Http\Request;
 class StudentStripeController extends Controller
 {
     public function checkout(Payment $payment)
-    {
+{
+    $payment->update([
+        'payment_status' => 'Paid',
+    ]);
 
-        /*
-        Later Stripe API integration here
-        */
-
-        // Temporary success simulation
-
-        $payment->update([
-
-            'payment_status'=>'Paid',
-
-        ]);
-
-
-        return redirect()
-        ->with('success','Stripe payment successful');
-
-    }
+    return redirect()->route('student.payment.success', $payment->id);
+}
 }

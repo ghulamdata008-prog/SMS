@@ -36,7 +36,7 @@ Payment History
 
 <th>Status</th>
 
-<th>Invoice</th>
+<th>Action</th>
 
 </tr>
 

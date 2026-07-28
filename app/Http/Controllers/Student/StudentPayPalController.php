@@ -9,18 +9,12 @@ class StudentPayPalController extends Controller
 {
 
     public function checkout(Payment $payment)
-    {
+{
+    $payment->update([
+        'payment_status' => 'Paid',
+    ]);
 
-        $payment->update([
-
-            'payment_status'=>'Paid',
-
-        ]);
-
-
-        return redirect()
-->with('success','PayPal payment successful');
-
-    }
+    return redirect()->route('student.payment.success', $payment->id);
+}
 
 }
