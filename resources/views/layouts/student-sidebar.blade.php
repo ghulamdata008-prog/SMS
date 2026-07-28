@@ -197,17 +197,10 @@
 /* Menu */
 
 .student-menu{
-
-    list-style:none;
-
-    padding:0;
-
-    margin:0;
-
     flex:1;
-
+    overflow-y:auto;
+    padding-right:5px;
 }
-
 .student-menu li{
 
     margin-bottom:10px;
@@ -269,13 +262,11 @@
 /* Logout */
 
 .student-logout{
-
     margin-top:auto;
-
+    position:sticky;
+    bottom:0;
+    background:linear-gradient(180deg,#0f172a,#1e3a8a);
     padding-top:20px;
-
-    border-top:1px solid rgba(255,255,255,.12);
-
 }
 
 .logout-button{
