@@ -19,8 +19,7 @@ class StudentPayPalController extends Controller
 
 
         return redirect()
-        ->route('student.fees.history')
-        ->with('success','PayPal payment successful');
+->with('success','PayPal payment successful');
 
     }
 

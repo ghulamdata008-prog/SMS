@@ -485,9 +485,9 @@ Route::get('/payment-history', [StudentFeeController::class, 'history'])
     [StudentPaymentController::class,'success'])
     ->name('payment.success');
 
-Route::get('/fees/history',
-    [StudentFeeController::class,'history'])
-    ->name('fees.history');
+  Route::get('/fees/history',
+        [StudentFeeController::class,'history'])
+        ->name('fees.history');
     Route::get('/profile', [StudentProfileController::class, 'index'])
     ->name('profile');
 

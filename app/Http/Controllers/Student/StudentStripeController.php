@@ -25,7 +25,6 @@ class StudentStripeController extends Controller
 
 
         return redirect()
-        ->route('student.fees.history')
         ->with('success','Stripe payment successful');
 
     }

@@ -19,8 +19,7 @@ class StudentMonnifyController extends Controller
 
 
         return redirect()
-        ->route('student.fees.history')
-        ->with('success','Monnify payment successful');
+         ->with('success','Monnify payment successful');
 
     }
 

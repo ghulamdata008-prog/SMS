@@ -80,16 +80,20 @@ Pending
 
 <td>
 
-@if($payment->invoice)
+<form action="{{ route('student.payment.delete',$payment->id) }}" 
+method="POST"
+onsubmit="return confirm('Are you sure you want to delete this payment?');">
 
-<a href="{{ route('student.invoice.show',$payment->invoice) }}"
-class="btn btn-primary btn-sm">
+@csrf
+@method('DELETE')
 
-Invoice
+<button type="submit" class="btn btn-danger btn-sm">
 
-</a>
+Delete
 
-@endif
+</button>
+
+</form>
 
 </td>
 
