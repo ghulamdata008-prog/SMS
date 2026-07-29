@@ -466,19 +466,20 @@ Route::get('/subjects', [StudentSubjectController::class, 'index'])
 Route::post('/fees/pay/{fee}',
     [StudentFeeController::class,'pay'])
     ->name('fees.pay');
-Route::get('/stripe/{payment}',
+
+    Route::get('/stripe/{payment}',
     [StudentStripeController::class,'checkout'])
     ->name('stripe.checkout');
 
+Route::get('/stripe/success/{payment}',
+    [StudentPaymentController::class,'success'])
+    ->name('payment.success');
 
-Route::get('/paypal/{payment}',
-    [StudentPayPalController::class,'checkout'])
-    ->name('paypal.checkout');
+Route::get('/stripe/cancel',
+    [StudentStripeController::class,'cancel'])
+    ->name('stripe.cancel');
 
 
-Route::get('/monnify/{payment}',
-    [StudentMonnifyController::class,'checkout'])
-    ->name('monnify.checkout');
 Route::get('/payment-history', [StudentFeeController::class, 'history'])
     ->name('payment.history');
     Route::get('/payment-success/{payment}',

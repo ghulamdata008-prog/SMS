@@ -110,47 +110,16 @@ Pending
 
     @csrf
 
-    <input type="hidden"
-           name="payment_method"
-           value="Stripe">
+    <input
+        type="hidden"
+        name="payment_method"
+        value="Stripe">
 
-    <button class="btn btn-primary w-100 mb-2">
+    <button class="btn btn-primary w-100">
 
         <i class="bi bi-credit-card"></i>
 
         Pay with Stripe
-
-    </button>
-
-</form>
-
-<form action="{{ route('student.fees.pay',$fee) }}" method="POST">
-
-    @csrf
-
-    <input type="hidden"
-           name="payment_method"
-           value="PayPal">
-
-    <button class="btn btn-info text-white w-100 mb-2">
-
-        Pay with PayPal
-
-    </button>
-
-</form>
-
-<form action="{{ route('student.fees.pay',$fee) }}" method="POST">
-
-    @csrf
-
-    <input type="hidden"
-           name="payment_method"
-           value="Monnify">
-
-    <button class="btn btn-warning w-100">
-
-        Pay with Monnify
 
     </button>
 
