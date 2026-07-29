@@ -62,7 +62,7 @@ class StudentStripeController extends Controller
 
             ],
 
-            'success_url' => route('student.payment.success', $payment),
+            'success_url' => route('student.stripes', $payment),
 
             'cancel_url' => route('student.fees.show', $fee),
 

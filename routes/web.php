@@ -473,7 +473,7 @@ Route::post('/fees/pay/{fee}',
 
 Route::get('/stripe/success/{payment}',
     [StudentPaymentController::class,'success'])
-    ->name('payment.success');
+    ->name('stripe.success');
 
 Route::get('/stripe/cancel',
     [StudentStripeController::class,'cancel'])
