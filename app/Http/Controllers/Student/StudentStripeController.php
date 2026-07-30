@@ -11,62 +11,55 @@ class StudentStripeController extends Controller
 {
     public function checkout(Payment $payment)
     {
+        // Set Stripe Secret Key
         Stripe::setApiKey(config('services.stripe.secret'));
 
+        // Load relationships
         $payment->load('student.schoolClass', 'student.section', 'fee');
 
         $student = $payment->student;
         $fee     = $payment->fee;
 
+        // Create Stripe Checkout Session
         $session = Session::create([
-
             'payment_method_types' => ['card'],
 
             'line_items' => [[
-
                 'price_data' => [
-
-                    'currency' => 'pkr',
+                    'currency' => 'usd', // use usd for testing
 
                     'product_data' => [
-
                         'name' => 'School Fee Payment',
 
                         'description' =>
-                            "Student Name: {$student->name}\n".
+                            "Student: {$student->name}\n".
                             "Class: ".($student->schoolClass->name ?? 'N/A')."\n".
                             "Section: ".($student->section->name ?? 'N/A')."\n".
                             "Fee Type: {$fee->fee_type}",
-
                     ],
 
-                    'unit_amount' => (int) ($payment->amount * 100),
-
+                    'unit_amount' => (int) round($payment->amount * 100),
                 ],
 
                 'quantity' => 1,
-
             ]],
 
             'mode' => 'payment',
 
             'customer_email' => $student->email,
 
-            'metadata' => [
+            'success_url' => route('student.stripe.success', $payment, true),
 
-                'payment_id'   => $payment->id,
-                'student_name' => $student->name,
-                'class'        => $student->schoolClass->name ?? '',
-                'section'      => $student->section->name ?? '',
-                'fee_type'     => $fee->fee_type,
-
-            ],
-
-            'success_url' => route('student.stripe.success', $payment),
-
-'cancel_url' => route('student.stripe.cancel'),
+            'cancel_url' => route('student.stripe.cancel', [], true),
         ]);
 
         return redirect($session->url);
+    }
+
+    public function cancel()
+    {
+        return redirect()
+            ->route('student.fees.index')
+            ->with('error', 'Payment was cancelled.');
     }
 }

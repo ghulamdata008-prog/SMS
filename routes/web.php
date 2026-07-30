@@ -482,9 +482,9 @@ Route::get('/stripe/cancel',
 
 Route::get('/payment-history', [StudentFeeController::class, 'history'])
     ->name('payment.history');
-    Route::get('/payment-success/{payment}',
-    [StudentPaymentController::class,'success'])
-    ->name('payment.success');
+    // Route::get('/payment-success/{payment}',
+    // [StudentPaymentController::class,'success'])
+    // ->name('payment.success');
 
   Route::get('/fees/history',
         [StudentFeeController::class,'history'])
