@@ -6,7 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
-                'resources/css/student.css',
+
                 'resources/css/teacher.css',
                 'resources/js/app.js',
             ],
