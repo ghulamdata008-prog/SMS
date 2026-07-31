@@ -160,11 +160,7 @@
 
                                 </option>
 
-                                <option value="Bank">
-
-                                    Bank Transfer
-
-                                </option>
+                                
 
                                 <option value="Stripe">
 
@@ -172,17 +168,7 @@
 
                                 </option>
 
-                                <option value="PayPal">
-
-                                    PayPal
-
-                                </option>
-
-                                <option value="Monify">
-
-                                    Monnify
-
-                                </option>
+                               
 
                             </select>
 

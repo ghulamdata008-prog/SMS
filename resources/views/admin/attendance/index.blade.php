@@ -109,8 +109,7 @@
 
                                         <div class="fw-semibold">
 
-                                            {{ $attendance->student->name }}
-
+                                           {{ $attendance->student->name ?? 'Deleted Student' }}
                                         </div>
 
                                         <small class="text-muted">

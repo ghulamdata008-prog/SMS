@@ -6,9 +6,7 @@
 
     <a href="{{ route('admin.dashboard') }}" class="brand">
 
-        <!-- <div class="brand-icon">
-            <i class="bi bi-mortarboard-fill"></i>
-        </div> -->
+        
 <div class="brand-icon">
     <div class="brand-glow"></div>
     <i class="bi bi-mortarboard-fill"></i>
@@ -24,33 +22,6 @@
 
 
 
-<!-- User Info -->
-
-<!-- <div class="admin-info"> -->
-
-    <!-- <div class="admin-icon">
-        <i class="bi bi-person-fill"></i>
-    </div> -->
-<!-- <div class="admin-icon">
-    <div class="online-dot"></div>
-    <i class="bi bi-person-fill"></i>
-</div>
-
-    <div>
-
-        <h6>
-            {{ auth()->user()->name }}
-        </h6>
-
-
-        <span>
-            {{ auth()->user()->getRoleNames()->first() ?? 'Admin' }}
-        </span>
-
-    </div>
-
-
-</div> -->
 
     <!-- Menu -->
 
@@ -149,8 +120,34 @@ Teacher Assign
             </a>
         </li>
 
+<li class="nav-item">
 
+    <a class="nav-link {{ request()->routeIs('admin.exams.*') ? 'active' : '' }}"
+       href="{{ route('admin.exams.index') }}">
 
+        <i class="bi bi-journal-check"></i>
+
+        <span>Exams</span>
+
+    </a>
+
+</li>
+<li class="nav-item">
+
+    <a href="{{ route('admin.online-results.index') }}"
+       class="nav-link">
+
+        <i class="bi bi-journal-check"></i>
+
+        <span>
+
+            Online Results
+
+        </span>
+
+    </a>
+
+</li>
 <li>
 
 <a href="{{route('admin.marks.index')}}"
@@ -163,18 +160,7 @@ Marks
 </a>
 
 </li>
-<!-- <li class="nav-item">
 
-    <a href="{{ route('admin.fees.index') }}"
-       class="nav-link">
-
-        <i class="bi bi-credit-card"></i>
-
-        <span>Payment Management</span>
-
-    </a>
-
-</li> -->
 <!-- ========================= -->
 <!-- Payment Management -->
 <!-- ========================= -->

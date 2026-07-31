@@ -26,12 +26,7 @@
 
 
     </div>
-
-
-
-
-
-    @if(session('success'))
+ @if(session('success'))
 
 
         <div class="alert success-alert shadow-sm">
@@ -45,17 +40,8 @@
 
     @endif
 
-
-
-
-
-
-
-    <div class="settings-card shadow-lg">
-
-
-
-        <!-- Card Header -->
+ <div class="settings-card shadow-lg">
+ <!-- Card Header -->
 
         <div class="settings-header">
 
@@ -67,10 +53,7 @@
 
 
             </div>
-
-
-
-            <div>
+ <div>
 
 
                 <h5 class="mb-1">
@@ -91,14 +74,7 @@
 
 
         </div>
-
-
-
-
-
-
-
-        <div class="settings-body">
+ <div class="settings-body">
 
 
 
@@ -107,16 +83,8 @@
 
 
                 @csrf
-
-
-
-
-
-                <div class="row g-4">
-
-
-
-                    <!-- School Name -->
+  <div class="row g-4">
+ <!-- School Name -->
 
 
                     <div class="col-md-6">
@@ -148,14 +116,7 @@
 
 
                     </div>
-
-
-
-
-
-
-
-                    <!-- Email -->
+  <!-- Email -->
 
 
                     <div class="col-md-6">
@@ -188,14 +149,7 @@
 
 
                     </div>
-
-
-
-
-
-
-
-                    <!-- Phone -->
+ <!-- Phone -->
 
 
                     <div class="col-md-6">
@@ -228,14 +182,7 @@
 
 
                     </div>
-
-
-
-
-
-
-
-                    <!-- Address -->
+ <!-- Address -->
 
 
                     <div class="col-md-12">
@@ -271,13 +218,7 @@
 
                 </div>
 
-
-
-
-
-
-
-                <div class="mt-4">
+ <div class="mt-4">
 
 
                     <button class="btn save-btn">
@@ -292,12 +233,7 @@
 
 
                 </div>
-
-
-
-
-
-            </form>
+  </form>
 
 
 
@@ -311,13 +247,6 @@
 
 
 </div>
-
-
-
-
-
-
-
 <style>
 
 
@@ -332,10 +261,6 @@
 
 
 }
-
-
-
-
 
 /* SAME ADMIN THEME */
 
@@ -361,8 +286,6 @@
 
 
 }
-
-
 
 .header-icon{
 
@@ -392,11 +315,6 @@
 
 
 }
-
-
-
-
-
 .settings-body{
 
 
@@ -404,11 +322,6 @@
 
 
 }
-
-
-
-
-
 .success-alert{
 
 
@@ -437,11 +350,6 @@
 
 
 }
-
-
-
-
-
 .form-label{
 
 
@@ -452,11 +360,6 @@
 
 
 }
-
-
-
-
-
 .input-group-custom{
 
 
@@ -482,8 +385,6 @@
 
 
 }
-
-
 
 .input-group-custom i{
 
@@ -512,10 +413,6 @@
 
 
 }
-
-
-
-
 .input-group-custom .form-control:focus{
 
 
@@ -526,11 +423,6 @@
 
 
 }
-
-
-
-
-
 .textarea-box{
 
 
@@ -538,9 +430,6 @@
 
 
 }
-
-
-
 .textarea-box textarea{
 
 
@@ -551,11 +440,6 @@
 
 
 }
-
-
-
-
-
 .save-btn{
 
 

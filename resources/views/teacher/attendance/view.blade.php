@@ -403,14 +403,15 @@ Filter
 
 <div class="avatar">
 
-{{ strtoupper(substr($attendance->student->name,0,1)) }}
+  {{ strtoupper(substr($attendance->student->name ?? 'D',0,1)) }}
+
 
 </div>
 
 
 <span>
 
-{{ $attendance->student->name }}
+ {{ $attendance->student->name ?? 'Deleted Student' }}
 
 </span>
 

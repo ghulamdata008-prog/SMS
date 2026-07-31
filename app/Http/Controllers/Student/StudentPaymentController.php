@@ -77,11 +77,9 @@ class StudentPaymentController extends Controller
 
         $fee->save();
 
-        return redirect()
-
-            ->route('student.fees.history')
-
-            ->with('success','Payment Completed Successfully.');
+       return redirect()
+    ->route('student.payment.history')
+    ->with('success', 'Payment Completed Successfully.');
     }
     public function destroy($id)
 {

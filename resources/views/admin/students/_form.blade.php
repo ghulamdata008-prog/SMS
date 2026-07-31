@@ -62,7 +62,20 @@
     @enderror
 
 </div>
+<div class="mb-3">
+    <label class="form-label">Roll No</label>
 
+    <input
+        type="text"
+        name="roll_no"
+        class="form-control"
+        value="{{ old('roll_no') }}"
+        required>
+
+    @error('roll_no')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
     {{-- Phone --}}
     <div class="col-md-6">
 

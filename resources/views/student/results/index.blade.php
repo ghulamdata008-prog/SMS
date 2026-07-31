@@ -333,7 +333,157 @@
 
 @endif
 
+<div class="result-card mt-4">
 
+    <div class="result-card-header">
+
+        <h4>
+            Online Exam Results
+        </h4>
+
+        <span>
+            {{ $examResults->count() }} Exams
+        </span>
+
+    </div>
+
+    <div class="card-body p-4">
+
+        @if($examResults->count())
+
+        <div class="table-responsive">
+
+            <table class="table result-table align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Exam</th>
+
+                        <th>Marks</th>
+
+                        <th>Percentage</th>
+
+                        <th>Result</th>
+
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                @foreach($examResults as $examResult)
+
+                <tr>
+
+                    <td>
+
+                        <div class="number-box">
+
+                            {{ $loop->iteration }}
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <div class="subject-name">
+
+                            <div class="subject-icon">
+
+                                <i class="bi bi-journal-check"></i>
+
+                            </div>
+
+                            {{ $examResult->exam->title ?? 'Online Exam' }}
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <span class="marks-badge obtained">
+
+                            {{ $examResult->obtained_marks }}
+
+                            /
+
+                            {{ $examResult->total_marks }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="percentage-badge">
+
+                            {{ $examResult->total_marks > 0
+                                ? round(($examResult->obtained_marks / $examResult->total_marks) * 100, 2)
+                                : 0 }}%
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        @if($examResult->result == 'Pass')
+
+                            <span class="badge bg-success">
+
+                                Pass
+
+                            </span>
+
+                        @else
+
+                            <span class="badge bg-danger">
+
+                                Fail
+
+                            </span>
+
+                        @endif
+
+                    </td>
+
+                    <td>
+
+                        {{ $examResult->submitted_at ? $examResult->submitted_at->format('d M Y') : '-' }}
+
+                    </td>
+
+                </tr>
+
+                @endforeach
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        @else
+
+        <div class="alert alert-info mb-0">
+
+            You have not attempted any online exam yet.
+
+        </div>
+
+        @endif
+
+    </div>
+
+</div>
 
 </div>
 
@@ -344,432 +494,495 @@
 
 
 .result-page{
-
-animation:.4s ease fade;
-
+    animation:fadeIn .45s ease;
 }
 
-
-@keyframes fade{
-
-from{
-
-opacity:0;
-
-transform:translateY(15px);
-
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-
-/* Hero */
-
+/* ====================================
+   HERO
+==================================== */
 
 .result-hero{
 
-background:
-linear-gradient(135deg,#059669,#2563eb);
+    background:linear-gradient(135deg,#111827,#2563eb);
 
-padding:35px;
+    border-radius:24px;
 
-border-radius:25px;
+    padding:35px;
 
-color:white;
+    color:#fff;
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    justify-content:space-between;
 
-align-items:center;
+    align-items:center;
+
+    box-shadow:0 15px 35px rgba(37,99,235,.25);
+
+    margin-bottom:30px;
 
 }
-
 
 .result-badge{
 
-background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 
-padding:8px 18px;
+    color:#fff;
 
-border-radius:50px;
+    padding:8px 18px;
 
-font-size:14px;
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
 
 }
-
 
 .result-hero h2{
 
-font-size:35px;
+    margin-top:18px;
 
-font-weight:700;
+    margin-bottom:10px;
+
+    font-size:34px;
+
+    font-weight:700;
 
 }
-
 
 .result-hero p{
 
-opacity:.8;
+    color:rgba(255,255,255,.82);
+
+    margin:0;
 
 }
-
-
 
 .result-icon{
 
-width:90px;
+    width:90px;
 
-height:90px;
+    height:90px;
 
-border-radius:25px;
+    border-radius:22px;
 
-background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    justify-content:center;
 
-font-size:45px;
+    font-size:42px;
 
 }
 
-
-
-
-/* Card */
-
+/* ====================================
+   RESULT CARD
+==================================== */
 
 .result-card{
 
-background:white;
+    background:#fff;
 
-border-radius:25px;
+    border-radius:22px;
 
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+    overflow:hidden;
 
-overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 
 }
-
-
 
 .result-card-header{
 
-padding:25px;
+    background:linear-gradient(135deg,#111827,#2563eb);
 
-background:#f8fafc;
+    color:#fff;
 
-display:flex;
+    padding:22px 25px;
 
-justify-content:space-between;
+    display:flex;
 
-align-items:center;
+    justify-content:space-between;
+
+    align-items:center;
 
 }
 
+.result-card-header h4{
 
+    margin:0;
+
+    font-weight:700;
+
+}
 
 .result-card-header span{
 
-background:#2563eb;
+    background:rgba(255,255,255,.15);
 
-color:white;
+    color:#fff;
 
-padding:8px 18px;
+    padding:8px 18px;
 
-border-radius:50px;
+    border-radius:30px;
+
+    font-weight:600;
 
 }
 
-
-
-/* Table */
-
+/* ====================================
+   TABLE
+==================================== */
 
 .result-table{
 
-border-collapse:separate;
-
-border-spacing:0 12px;
+    margin:0;
 
 }
 
+.result-table thead{
 
+    background:#f8fafc;
+
+}
 
 .result-table thead th{
 
-border:0;
+    border:none;
 
-color:#64748b;
+    color:#64748b;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    padding:18px;
 
 }
 
+.result-table tbody td{
 
+    padding:18px;
+
+    vertical-align:middle;
+
+    border-top:1px solid #eef2f7;
+
+}
 
 .result-table tbody tr{
 
-background:white;
-
-box-shadow:0 5px 15px rgba(0,0,0,.05);
+    transition:.3s;
 
 }
 
+.result-table tbody tr:hover{
 
-
-.result-table td{
-
-border:0;
-
-padding:18px;
+    background:#f8fafc;
 
 }
 
-
+/* ====================================
+   NUMBER
+==================================== */
 
 .number-box{
 
-width:35px;
+    width:38px;
 
-height:35px;
+    height:38px;
 
-border-radius:12px;
+    border-radius:12px;
 
-background:#dbeafe;
+    background:#dbeafe;
 
-color:#2563eb;
+    color:#2563eb;
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    justify-content:center;
 
-font-weight:bold;
+    font-weight:700;
 
 }
 
-
+/* ====================================
+   SUBJECT
+==================================== */
 
 .subject-name{
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-gap:12px;
+    gap:12px;
 
-font-weight:600;
+    font-weight:600;
 
 }
-
-
 
 .subject-icon{
 
-width:42px;
+    width:45px;
 
-height:42px;
+    height:45px;
 
-background:#ede9fe;
+    border-radius:14px;
 
-color:#7c3aed;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
 
-border-radius:12px;
+    color:#fff;
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    justify-content:center;
+
+    font-size:18px;
 
 }
 
-
-
+/* ====================================
+   BADGES
+==================================== */
 
 .marks-badge{
 
-padding:8px 15px;
+    padding:8px 16px;
 
-border-radius:50px;
+    border-radius:30px;
 
-font-weight:600;
+    font-size:13px;
+
+    font-weight:700;
 
 }
-
-
 
 .total{
 
-background:#dbeafe;
+    background:#dbeafe;
 
-color:#2563eb;
+    color:#2563eb;
 
 }
-
 
 .obtained{
 
-background:#dcfce7;
+    background:#dcfce7;
 
-color:#16a34a;
+    color:#15803d;
 
 }
-
-
 
 .percentage-badge{
 
-background:#fef3c7;
+    background:#fef3c7;
 
-color:#d97706;
+    color:#b45309;
 
-padding:8px 15px;
+    padding:8px 16px;
 
-border-radius:50px;
+    border-radius:30px;
 
-font-weight:600;
+    font-size:13px;
+
+    font-weight:700;
 
 }
 
-
-
-/* Summary */
-
+/* ====================================
+   SUMMARY
+==================================== */
 
 .summary-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-gap:20px;
+    gap:20px;
+
+    margin-top:30px;
 
 }
-
-
 
 .summary-card{
 
-padding:25px;
+    border-radius:22px;
 
-border-radius:22px;
+    padding:25px;
 
-color:white;
+    color:#fff;
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-gap:18px;
+    gap:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+    transition:.3s;
 
 }
 
+.summary-card:hover{
+
+    transform:translateY(-6px);
+
+}
 
 .summary-card i{
 
-font-size:35px;
+    font-size:36px;
 
 }
-
 
 .summary-card small{
 
-opacity:.8;
+    color:rgba(255,255,255,.8);
 
 }
-
-
 
 .summary-card h3{
 
-margin:5px 0;
+    margin:5px 0;
+
+    font-weight:700;
 
 }
-
-
 
 .blue{
 
-background:linear-gradient(135deg,#2563eb,#3b82f6);
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
 
 }
-
 
 .green{
 
-background:linear-gradient(135deg,#059669,#10b981);
+    background:linear-gradient(135deg,#059669,#10b981);
 
 }
-
 
 .orange{
 
-background:linear-gradient(135deg,#ea580c,#f97316);
+    background:linear-gradient(135deg,#ea580c,#fb923c);
 
 }
-
 
 .purple{
 
-background:linear-gradient(135deg,#7c3aed,#a855f7);
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
 
 }
 
-
-
-/* Empty */
-
+/* ====================================
+   EMPTY
+==================================== */
 
 .empty-result{
 
-background:white;
+    background:#fff;
 
-padding:60px;
+    border-radius:22px;
 
-border-radius:25px;
+    padding:70px 30px;
 
-text-align:center;
+    text-align:center;
 
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 
-color:#64748b;
+    color:#64748b;
 
 }
-
 
 .empty-result i{
 
-font-size:60px;
+    font-size:65px;
+
+    color:#94a3b8;
+
+    margin-bottom:20px;
 
 }
 
+.empty-result h4{
 
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
 
 @media(max-width:992px){
 
-.summary-grid{
+    .summary-grid{
 
-grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .result-hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:25px;
+
+    }
 
 }
 
+@media(max-width:768px){
+
+    .summary-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .result-card-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+
+    }
+
 }
-
-
 </style>
 
 

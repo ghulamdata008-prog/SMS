@@ -63,18 +63,8 @@
 
         </div>
 
-
-
-
-
-
-        <div class="card-body p-4">
-
-
-
-
-
-            <div class="table-wrapper">
+ <div class="card-body p-4">
+ <div class="table-wrapper">
 
 
                 <div class="table-responsive">
@@ -124,26 +114,13 @@
 
                         </thead>
 
+ <tbody>
 
+ @forelse($subjects as $subject)
 
+  <tr>
 
-
-
-                        <tbody>
-
-
-
-
-                        @forelse($subjects as $subject)
-
-
-
-
-                            <tr>
-
-
-
-                                <td>
+ <td>
 
 
                                     <span class="number-badge">
@@ -154,13 +131,7 @@
 
 
                                 </td>
-
-
-
-
-
-
-                                <td>
+ <td>
 
 
                                     <div class="subject-name">
@@ -188,14 +159,7 @@
 
 
                                 </td>
-
-
-
-
-
-
-
-                                <td>
+ <td>
 
 
                                     <span class="class-badge">
@@ -211,13 +175,7 @@
 
 
                                 </td>
-
-
-
-
-
-
-                                <td>
+  <td>
 
 
                                     <span class="section-badge">
@@ -234,12 +192,7 @@
 
                                 </td>
 
-
-
-
-
-
-                                <td>
+  <td>
 
 
                                     <span class="student-count">
@@ -255,18 +208,9 @@
 
 
                                 </td>
+                                  <td>
 
-
-
-
-
-
-
-                                <td>
-
-
-
-                                    <a href="{{ route('teacher.subjects.show',$subject->id) }}"
+  <a href="{{ route('teacher.subjects.show',$subject->id) }}"
 
                                        class="view-btn">
 
@@ -278,27 +222,11 @@
 
 
                                     </a>
+  </td>
+ </tr>
 
-
-
-
-                                </td>
-
-
-
-
-                            </tr>
-
-
-
-
-
-                        @empty
-
-
-
-
-                            <tr>
+ @empty
+ <tr>
 
 
                                 <td colspan="6"
@@ -320,38 +248,14 @@
 
                             </tr>
 
+ @endforelse
 
+</tbody>
+ </table>
 
-
-                        @endforelse
-
-
-
-
-
-
-                        </tbody>
-
-
-
-
-                    </table>
-
-
-
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-
-
-        </div>
+ </div>
+</div>
+</div>
 
 
 
@@ -360,14 +264,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
 
 <style>
 
@@ -378,18 +274,11 @@ padding:10px;
 
 }
 
-
-
-
 .page-header h2{
 
 font-size:30px;
 
 }
-
-
-
-
 
 .subject-card{
 
@@ -402,9 +291,6 @@ overflow:hidden;
 
 
 }
-
-
-
 
 .subject-header{
 
@@ -423,10 +309,6 @@ gap:15px;
 
 
 }
-
-
-
-
 .header-icon{
 
 
@@ -449,10 +331,6 @@ font-size:25px;
 
 }
 
-
-
-
-
 .table-wrapper{
 
 
@@ -464,12 +342,6 @@ overflow:hidden;
 
 
 }
-
-
-
-
-
-
 .subject-table thead{
 
 
@@ -479,10 +351,6 @@ color:white;
 
 
 }
-
-
-
-
 .subject-table th{
 
 
@@ -494,10 +362,6 @@ text-transform:uppercase;
 
 
 }
-
-
-
-
 .subject-table td{
 
 
@@ -506,9 +370,6 @@ padding:18px;
 
 }
 
-
-
-
 .subject-table tbody tr{
 
 
@@ -516,9 +377,6 @@ transition:.3s;
 
 
 }
-
-
-
 
 .subject-table tbody tr:hover{
 
@@ -529,11 +387,6 @@ transform:scale(1.01);
 
 
 }
-
-
-
-
-
 
 .number-badge{
 

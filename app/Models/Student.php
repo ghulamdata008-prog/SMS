@@ -21,6 +21,7 @@ class Student extends Model
         'class_id',
         'section_id',
         'profile_image',
+        'roll_no',
         'status',
 
         

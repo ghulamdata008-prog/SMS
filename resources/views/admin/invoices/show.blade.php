@@ -20,10 +20,7 @@
 
     </div>
 
-
-
-
-    <div class="invoice-wrapper">
+<div class="invoice-wrapper">
 
 
         <div class="invoice-card shadow-lg">
@@ -170,11 +167,7 @@
 
                     </div>
 
-
-
-
-
-                    <!-- Status -->
+ <!-- Status -->
 
                     <div class="col-md-6">
 
@@ -199,12 +192,7 @@
 
                     </div>
 
-
-
-
-
-
-                    <!-- Transaction ID -->
+ <!-- Transaction ID -->
 
                     <div class="col-md-6">
 
@@ -229,11 +217,7 @@
 
                     </div>
 
-
-
-
-
-                    <!-- Date -->
+ <!-- Date -->
 
                     <div class="col-md-6">
 
@@ -258,21 +242,11 @@
 
                     </div>
 
+  </div>
 
+ </div>
 
-                </div>
-
-
-
-
-            </div>
-
-
-
-
-
-
-            <div class="invoice-footer">
+ <div class="invoice-footer">
 
 
                 <a href="{{ route('admin.invoices.index') }}"
@@ -282,28 +256,15 @@
                     <i class="bi bi-arrow-left"></i>
 
                     Back
+ </a>
 
-
-                </a>
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-
-    </div>
-
-
+ </div>
 
 </div>
 
+ </div>
 
-
+</div>
 
 <style>
 

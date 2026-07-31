@@ -17,13 +17,8 @@ class Teacher extends Model
     'salary',
 ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
    
-    public function subjects()
+ public function subjects()
 {
     return $this->belongsToMany(
         Subject::class,
@@ -54,5 +49,13 @@ public function teacherSubjects()
 public function assignments()
 {
     return $this->hasMany(TeacherAssignment::class);
+}
+ public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function marks()
+{
+    return $this->hasMany(Mark::class);
 }
 }

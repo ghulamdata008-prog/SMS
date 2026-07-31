@@ -250,8 +250,6 @@
 
 }
 
-
-
 .input-group-custom input:focus{
 
     border-color:#2563eb;

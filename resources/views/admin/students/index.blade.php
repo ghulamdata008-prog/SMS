@@ -183,20 +183,7 @@
 
                                 </form>
 
-                                <!-- <form action="{{ route('admin.students.destroy',$student) }}"
-                                      method="POST"
-                                      class="delete-form d-inline">
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="btn-action delete">
-
-                                        <i class="bi bi-trash-fill"></i>
-
-                                    </button>
-
-                                </form> -->
+                               
 
                             </div>
 

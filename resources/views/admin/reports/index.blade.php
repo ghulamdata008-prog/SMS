@@ -108,14 +108,7 @@
 
         </div>
 
-
-
-
-
-
-
-
-        <!-- Attendance -->
+<!-- Attendance -->
 
         <div class="col-xl-4 col-md-6">
 
@@ -154,12 +147,7 @@
 
     </div>
 
-
-
-
-
-
-    <!-- Report Actions -->
+ <!-- Report Actions -->
 
 
     <div class="report-action-box mt-5">
@@ -185,14 +173,9 @@
         </div>
 
 
+ <div class="d-flex flex-wrap gap-3">
 
-
-
-        <div class="d-flex flex-wrap gap-3">
-
-
-
-            <a href="{{route('admin.reports.students')}}"
+ <a href="{{route('admin.reports.students')}}"
             class="report-btn students-btn">
 
 
@@ -203,59 +186,24 @@
 
             </a>
 
-
-
-
-
-
-            <a href="{{route('admin.reports.attendance')}}"
+<a href="{{route('admin.reports.attendance')}}"
             class="report-btn attendance-btn">
 
-
-                <i class="bi bi-calendar-check"></i>
+  <i class="bi bi-calendar-check"></i>
 
                 Attendance Report
+ </a>
 
-
-            </a>
-
-
-
-
-
-
-
-            <a href="{{route('admin.reports.marks')}}"
+ <a href="{{route('admin.reports.marks')}}"
             class="report-btn marks-btn">
 
-
-                <i class="bi bi-bar-chart"></i>
+ <i class="bi bi-bar-chart"></i>
 
                 Result Report
-
-
-            </a>
-
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
+ </a>
+ </div>
 </div>
-
-
-
-
-
-
-
+</div>
 <style>
 
 

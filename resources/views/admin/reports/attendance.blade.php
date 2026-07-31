@@ -101,14 +101,14 @@
 
                                 <div class="student-avatar">
 
-                                    {{ strtoupper(substr($item->student->name,0,1)) }}
+                                   {{ strtoupper(substr($fee->student->name ?? 'D',0,1)) }}
 
                                 </div>
 
 
                                 <span>
 
-                                    {{$item->student->name}}
+                                   {{$item->student->name ?? 'Deleted Student'}}
 
                                 </span>
 

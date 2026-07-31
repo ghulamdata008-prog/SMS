@@ -123,7 +123,7 @@
 
                             <span class="badge subject-badge">
 
-                                {{ $subject->schoolClass->name }}
+                               {{ $subject->schoolClass->name ?? 'Deleted Class' }}
 
                             </span>
 
@@ -184,36 +184,7 @@
 
                                 </form>
 
-                                <!-- <a href="{{ route('admin.subjects.show',$subject->id) }}"
-                                   class="action-btn view">
-
-                                    <i class="bi bi-eye-fill"></i>
-
-                                </a>
-
-                                <a href="{{ route('admin.subjects.edit',$subject->id) }}"
-                                   class="action-btn edit">
-
-                                    <i class="bi bi-pencil-fill"></i>
-
-                                </a>
-
-                                <form
-                                    action="{{ route('admin.subjects.destroy',$subject->id) }}"
-                                    method="POST"
-                                    class="delete-form d-inline">
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="action-btn delete">
-
-                                        <i class="bi bi-trash-fill"></i>
-
-                                    </button>
-
-                                </form> -->
-
+                              
                             </div>
 
                         </td>

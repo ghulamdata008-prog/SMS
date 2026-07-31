@@ -141,11 +141,7 @@
 
 
                         </td>
-
-
-
-
-                        <td>
+ <td>
 
                             <span class="amount">
 
@@ -154,11 +150,7 @@
                             </span>
 
                         </td>
-
-
-
-
-                        <td>
+ <td>
 
                             <span class="date">
 
@@ -167,11 +159,7 @@
                             </span>
 
                         </td>
-
-
-
-
-                        <td>
+ <td>
 
 
                             <a href="{{ route('admin.invoices.show',$invoice) }}"
@@ -184,11 +172,7 @@
 
                             </a>
 
-
-
-
-
-                            <form action="{{ route('admin.invoices.destroy',$invoice) }}"
+ <form action="{{ route('admin.invoices.destroy',$invoice) }}"
                             method="POST"
                             class="d-inline">
 
@@ -294,70 +278,86 @@
 
 
 .invoice-card{
-
-    border-radius:20px;
+    border:none;
+    border-radius:26px;
     overflow:hidden;
-
+    background:#fff;
+    box-shadow:0 20px 50px rgba(15,23,42,.08);
 }
-
-
 
 .invoice-header{
-
-    background:linear-gradient(135deg,#111827,#2563eb);
-    color:white;
-    padding:20px;
-
+    background:#111827;
+    color:#fff;
+    padding:24px 28px;
+    border:none;
 }
 
+.invoice-header h5{
+    font-weight:700;
+    margin-bottom:3px;
+}
 
+.invoice-header small{
+    color:#cbd5e1;
+    font-size:14px;
+}
 
 .invoice-icon{
 
-    width:50px;
-    height:50px;
-    background:rgba(255,255,255,.2);
-    border-radius:15px;
+    width:54px;
+    height:54px;
+
+    border-radius:16px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    background:#334155;
+
     font-size:24px;
 
-    margin-right:15px;
+    margin-right:14px;
 
+    color:#fff;
 }
 
 
-
+.invoice-table{
+    margin-bottom:0;
+}
 
 .invoice-table thead{
 
-    background:#f8fafc;
+    background:#111827;
 
 }
 
+.invoice-table thead th{
 
+    color:#fff;
 
-.invoice-table th{
+    font-size:15px;
 
-    padding:18px;
-    color:#64748b;
-    font-size:14px;
-    text-transform:uppercase;
+    font-weight:700;
 
-}
-
-
-
-.invoice-table td{
+    border:none;
 
     padding:18px;
 
+    text-transform:none;
+
 }
 
+.invoice-table tbody td{
 
+    padding:18px;
+
+    vertical-align:middle;
+
+    border-color:#eef2f7;
+
+}
 
 .invoice-table tbody tr{
 
@@ -365,155 +365,185 @@
 
 }
 
-
-
 .invoice-table tbody tr:hover{
 
     background:#f8fafc;
-    transform:scale(1.01);
 
 }
-
-
-
 
 .id-badge{
 
-    background:#e0e7ff;
-    color:#4338ca;
+    display:inline-flex;
 
-    padding:7px 12px;
-    border-radius:20px;
+    width:40px;
 
-    font-weight:600;
+    height:40px;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#edf2ff;
+
+    color:#2563eb;
+
+    border-radius:12px;
+
+    font-weight:700;
 
 }
-
-
 
 .invoice-number{
 
     font-weight:700;
+
     color:#2563eb;
 
+    font-size:18px;
+
 }
-
-
 
 .student-info{
 
     display:flex;
+
     align-items:center;
-    gap:10px;
+
+    gap:12px;
 
 }
-
-
 
 .student-avatar{
 
+    width:44px;
 
-    width:40px;
-    height:40px;
+    height:44px;
 
     border-radius:50%;
 
-    background:linear-gradient(135deg,#2563eb,#60a5fa);
-
-    color:white;
-
     display:flex;
-    align-items:center;
+
     justify-content:center;
 
-    font-weight:bold;
+    align-items:center;
 
-}
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
 
-
-
-.amount{
-
-    background:#dcfce7;
-    color:#15803d;
-
-    padding:8px 14px;
-
-    border-radius:20px;
+    color:#fff;
 
     font-weight:700;
 
 }
 
+.amount{
 
+    background:#dcfce7;
+
+    color:#15803d;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+}
 
 .date{
 
     color:#64748b;
 
+    font-weight:500;
+
 }
-
-
-
 
 .btn-view{
 
     background:#2563eb;
-    color:white;
-    border-radius:10px;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:7px 16px;
+
+    font-weight:600;
 
 }
-
-
 
 .btn-view:hover{
 
     background:#1d4ed8;
-    color:white;
+
+    color:#fff;
 
 }
-
-
-
 
 .btn-delete{
 
     background:#ef4444;
-    color:white;
-    border-radius:10px;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:7px 16px;
+
+    font-weight:600;
 
 }
-
-
 
 .btn-delete:hover{
 
     background:#dc2626;
-    color:white;
+
+    color:#fff;
 
 }
 
+.card-footer{
 
+    background:#fff !important;
 
+    border:none;
+
+    padding:18px 25px;
+
+}
 
 .empty-state{
 
     text-align:center;
-    padding:50px;
+
+    padding:60px;
+
+}
+
+.empty-state i{
+
+    font-size:55px;
+
+    color:#94a3b8;
+
+}
+
+.empty-state h5{
+
+    margin-top:15px;
+
+    font-weight:700;
+
+}
+
+.empty-state p{
 
     color:#64748b;
 
 }
-
-
-
-.empty-state i{
-
-    font-size:50px;
-
-}
-
-
 
 </style>
 

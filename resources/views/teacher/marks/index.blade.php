@@ -1,11 +1,10 @@
 @extends('layouts.teacher')
 
-@section('title','Add Marks')
+@section('title','Select Exam')
 
 @section('content')
 
-<div class="container-fluid teacher-page">
-
+<div class="container-fluid">
 
     <!-- Header -->
 
@@ -13,519 +12,257 @@
 
         <div>
 
-            <h2 class="fw-bold mb-1">
-                Add Student Marks
+            <span class="page-badge">
+
+                <i class="bi bi-award-fill"></i>
+
+                Teacher Panel
+
+            </span>
+
+            <h2 class="mt-3 fw-bold">
+
+                Select Exam
+
             </h2>
 
-            <p class="text-muted">
-                Manage student examination results
+            <p>
+
+                Choose an exam to enter or manage student marks.
+
             </p>
 
         </div>
 
-    </div>
+        <div class="header-icon">
 
-
-
-    @if(session('success'))
-
-    <div class="alert alert-success shadow-sm border-0 rounded-4">
-
-        <i class="bi bi-check-circle-fill me-2"></i>
-
-        {{ session('success') }}
-
-    </div>
-
-    @endif
-
-
-
-
-    @if($errors->any())
-
-    <div class="alert alert-danger shadow-sm border-0 rounded-4">
-
-        <ul class="mb-0">
-
-            @foreach($errors->all() as $error)
-
-            <li>
-                {{ $error }}
-            </li>
-
-            @endforeach
-
-        </ul>
-
-    </div>
-
-    @endif
-
-
-
-
-
-
-    <div class="premium-card shadow-lg">
-
-
-        <div class="card-header-premium">
-
-
-            <div class="header-icon">
-
-                <i class="bi bi-journal-check"></i>
-
-            </div>
-
-
-            <div>
-
-                <h5>
-                    Student Marks Entry
-                </h5>
-
-                <small>
-                    Add examination marks
-                </small>
-
-            </div>
-
+            <i class="bi bi-clipboard-check-fill"></i>
 
         </div>
 
+    </div>
 
+    <div class="row justify-content-center">
 
+        <div class="col-lg-7">
 
+            <div class="exam-card">
 
-        <div class="card-body p-4">
+                <div class="exam-header">
 
+                    <div class="header-left">
 
+                        <div class="icon-box">
 
-<form action="{{ route('teacher.marks.store') }}" method="POST">
+                            <i class="bi bi-journal-text"></i>
 
-@csrf
+                        </div>
 
+                        <div>
 
+                            <h4 class="mb-1">
 
+                                Exam Selection
 
-<div class="row g-4 mb-4">
+                            </h4>
 
+                            <small>
 
-<div class="col-md-6">
+                                Select an examination to continue
 
+                            </small>
 
-<label class="form-label fw-semibold">
-Subject
-</label>
+                        </div>
 
+                    </div>
 
-<select
-name="subject_id"
-class="form-select premium-input"
-required>
+                </div>
 
+                <div class="card-body p-4">
 
-<option value="">
-Select Subject
-</option>
+                    <div class="form-section">
 
+                        <label class="form-label">
 
-@foreach($assignments as $assignment)
+                            <i class="bi bi-list-check me-2"></i>
 
+                            Choose Exam
 
-<option value="{{ $assignment->subject_id }}">
+                        </label>
 
+                        <select class="form-select" id="exam">
 
-{{ $assignment->subject->name }}
+                            <option value="">
 
-({{ $assignment->schoolClass->name }}
+                                Select Exam
 
--
+                            </option>
 
-{{ $assignment->section->name }})
+                            @foreach($exams as $exam)
 
+                            <option value="{{ route('teacher.marks.create',$exam) }}">
 
-</option>
+                                {{ $exam->title }}
 
+                                -
 
-@endforeach
+                                {{ $exam->subject->name }}
 
+                                -
 
-</select>
+                                {{ $exam->schoolClass->name }}
 
+                            </option>
 
-</div>
+                            @endforeach
 
+                        </select>
 
+                    </div>
 
+                    <div class="info-box mt-4">
 
+                        <div class="info-icon">
 
-<div class="col-md-3">
+                            <i class="bi bi-info-circle-fill"></i>
 
+                        </div>
 
-<label class="form-label fw-semibold">
+                        <div>
 
-Total Marks
+                            <h6 class="mb-1">
 
-</label>
+                                Quick Tip
 
+                            </h6>
 
-<input
+                            <small>
 
-type="number"
+                                After selecting an exam you will automatically be redirected to the marks entry page.
 
-name="total_marks"
+                            </small>
 
-class="form-control premium-input"
+                        </div>
 
-value="100"
+                    </div>
 
-min="1"
+                </div>
 
-required>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="table-wrapper">
-
-
-<div class="table-responsive">
-
-
-<table class="table marks-table align-middle mb-0">
-
-
-<thead>
-
-
-<tr>
-
-<th width="70">
-#
-</th>
-
-
-<th>
-Student
-</th>
-
-
-<th>
-Class
-</th>
-
-
-<th>
-Section
-</th>
-
-
-<th width="200">
-Obtained Marks
-</th>
-
-
-</tr>
-
-
-</thead>
-
-
-
-
-<tbody>
-
-
-
-@forelse($students as $student)
-
-
-<tr>
-
-
-<td>
-
-<span class="number-badge">
-
-{{ $loop->iteration }}
-
-</span>
-
-</td>
-
-
-
-<td>
-
-<div class="student-info">
-
-
-<div class="avatar">
-
-{{ strtoupper(substr($student->name,0,1)) }}
-
-</div>
-
-
-<div>
-
-<h6 class="mb-0">
-
-{{ $student->name }}
-
-</h6>
-
-
-<small>
-{{ $student->email ?? '' }}
-</small>
-
-
-</div>
-
-
-</div>
-
-
-</td>
-
-
-
-
-<td>
-
-<span class="class-badge">
-
-{{ $student->schoolClass->name ?? '-' }}
-
-</span>
-
-</td>
-
-
-
-
-<td>
-
-<span class="section-badge">
-
-{{ $student->section->name ?? '-' }}
-
-</span>
-
-</td>
-
-
-
-
-<td>
-
-
-<input
-
-type="number"
-
-name="marks[{{ $student->id }}]"
-
-class="form-control premium-input obtained-mark"
-
-min="0"
-
-placeholder="Enter Marks"
-
-required>
-
-
-</td>
-
-
-
-</tr>
-
-
-
-@empty
-
-
-<tr>
-
-<td colspan="5"
-class="text-center py-5 text-danger">
-
-
-<i class="bi bi-people fs-3"></i>
-
-<h5>
-No Students Found
-</h5>
-
-
-</td>
-
-</tr>
-
-
-@endforelse
-
-
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-</div>
-
-
-
-
-
-@if($students->count())
-
-
-<div class="action-area">
-
-
-<a href="{{ route('teacher.marks.view') }}"
-
-class="btn btn-success px-4 rounded-3">
-
-
-<i class="bi bi-eye"></i>
-
-View Marks
-
-</a>
-
-
-
-
-<button
-
-type="submit"
-
-class="btn btn-primary px-4 rounded-3">
-
-
-<i class="bi bi-save"></i>
-
-Save Marks
-
-
-</button>
-
-
-
-</div>
-
-
-@endif
-
-
-
-
-
-</form>
-
-
+            </div>
 
         </div>
 
-
-
     </div>
 
-
 </div>
-
-
-
-
-
-
-
-
 
 <style>
 
-
-.teacher-page{
-
-padding:10px;
-
-}
-
-
-
-
-.page-header h2{
-
-font-size:30px;
-
-}
-
-
-
-
-
-.premium-card{
-
-background:white;
-
-border-radius:25px;
-
-overflow:hidden;
-
-}
-
-
-
-
-.card-header-premium{
-
+.page-header{
 
 background:linear-gradient(135deg,#111827,#2563eb);
 
-color:white;
+border-radius:24px;
 
-padding:25px;
+padding:30px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+color:#fff;
+
+}
+
+.page-badge{
+
+background:rgba(255,255,255,.15);
+
+padding:8px 18px;
+
+border-radius:50px;
+
+font-size:14px;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.page-header p{
+
+margin:0;
+
+color:rgba(255,255,255,.8);
+
+}
+
+.header-icon{
+
+width:85px;
+
+height:85px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.15);
 
 display:flex;
 
 align-items:center;
 
-gap:15px;
+justify-content:center;
 
+font-size:40px;
 
 }
 
+.exam-card{
 
+background:#fff;
 
-.header-icon{
+border-radius:24px;
 
+overflow:hidden;
 
-width:55px;
+box-shadow:0 20px 45px rgba(15,23,42,.08);
 
-height:55px;
+}
+
+.exam-header{
+
+background:linear-gradient(135deg,#111827,#2563eb);
+
+padding:22px 28px;
+
+color:#fff;
+
+}
+
+.header-left{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+}
+
+.icon-box{
+
+width:58px;
+
+height:58px;
 
 border-radius:18px;
 
-background:rgba(255,255,255,.2);
+background:rgba(255,255,255,.15);
 
 display:flex;
 
@@ -535,145 +272,81 @@ justify-content:center;
 
 font-size:25px;
 
-
 }
 
-
-
-.header-icon i{
-
-color:white;
-
-}
-
-
-
-
-.premium-input{
-
-
-border-radius:14px;
-
-padding:12px 15px;
-
-border:1px solid #e2e8f0;
-
-
-}
-
-
-
-.premium-input:focus{
-
-
-box-shadow:0 0 0 4px rgba(37,99,235,.15);
-
-border-color:#2563eb;
-
-
-}
-
-
-
-
-.table-wrapper{
-
-
-border-radius:20px;
-
-overflow:hidden;
-
-border:1px solid #e5e7eb;
-
-
-}
-
-
-
-.marks-table thead{
-
-
-background:#111827;
-
-color:white;
-
-
-}
-
-
-
-.marks-table th{
-
-
-padding:18px;
-
-font-size:13px;
-
-text-transform:uppercase;
-
-
-}
-
-
-
-.marks-table td{
-
-
-padding:16px;
-
-
-}
-
-
-
-
-.marks-table tbody tr{
-
-
-transition:.3s;
-
-
-}
-
-
-
-.marks-table tbody tr:hover{
-
+.form-section{
 
 background:#f8fafc;
 
+border:1px solid #e2e8f0;
+
+border-radius:18px;
+
+padding:24px;
 
 }
 
+.form-label{
 
+font-weight:700;
 
+color:#334155;
 
-.student-info{
+margin-bottom:12px;
 
+}
+
+.form-select{
+
+height:56px;
+
+border-radius:14px;
+
+border:1px solid #dbe4ee;
+
+font-size:15px;
+
+box-shadow:none;
+
+}
+
+.form-select:focus{
+
+border-color:#2563eb;
+
+box-shadow:0 0 0 .18rem rgba(37,99,235,.15);
+
+}
+
+.info-box{
 
 display:flex;
 
 align-items:center;
 
-gap:12px;
+gap:15px;
 
+padding:18px;
+
+border-radius:18px;
+
+background:#eff6ff;
+
+border:1px solid #bfdbfe;
 
 }
 
+.info-icon{
 
+width:50px;
 
-.avatar{
+height:50px;
 
+border-radius:14px;
 
-width:42px;
+background:#2563eb;
 
-height:42px;
-
-border-radius:50%;
-
-background:linear-gradient(135deg,#2563eb,#60a5fa);
-
-color:white;
+color:#fff;
 
 display:flex;
 
@@ -681,137 +354,38 @@ align-items:center;
 
 justify-content:center;
 
-font-weight:bold;
-
+font-size:22px;
 
 }
 
+.info-box h6{
 
+font-weight:700;
 
+color:#1e3a8a;
 
-.student-info small{
+}
 
+.info-box small{
 
 color:#64748b;
 
-
 }
-
-
-
-.number-badge{
-
-
-background:#dbeafe;
-
-color:#2563eb;
-
-padding:8px 12px;
-
-border-radius:20px;
-
-font-weight:bold;
-
-
-}
-
-
-
-
-.class-badge{
-
-
-background:#dcfce7;
-
-color:#15803d;
-
-padding:7px 14px;
-
-border-radius:20px;
-
-font-weight:600;
-
-
-}
-
-
-
-.section-badge{
-
-
-background:#fef3c7;
-
-color:#b45309;
-
-padding:7px 14px;
-
-border-radius:20px;
-
-font-weight:600;
-
-
-}
-
-
-
-.action-area{
-
-
-display:flex;
-
-justify-content:flex-end;
-
-gap:15px;
-
-margin-top:25px;
-
-
-}
-
 
 </style>
 
-
-
-
-
 <script>
 
-document.addEventListener('DOMContentLoaded', function () {
+document.getElementById('exam').addEventListener('change', function () {
 
+    if(this.value){
 
-const totalMarks=document.querySelector('[name="total_marks"]');
+        window.location.href = this.value;
 
-
-function updateMax(){
-
-
-document.querySelectorAll('.obtained-mark').forEach(function(input){
-
-
-input.max=totalMarks.value;
-
+    }
 
 });
-
-
-}
-
-
-
-updateMax();
-
-
-totalMarks.addEventListener('keyup',updateMax);
-
-totalMarks.addEventListener('change',updateMax);
-
-
-
-});
-
 
 </script>
-
 
 @endsection

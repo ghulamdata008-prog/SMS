@@ -17,7 +17,9 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->date('attendance_date');
-
+$table->foreignId('student_id')
+      ->constrained()
+      ->cascadeOnDelete();
             $table->enum('status',[
                 'Present',
                 'Absent',

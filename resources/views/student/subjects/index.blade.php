@@ -257,350 +257,264 @@
 
 
 .student-page{
-
-    animation:.4s ease fadeIn;
-
+    animation:fadeIn .4s ease;
 }
 
-
 @keyframes fadeIn{
-
     from{
         opacity:0;
-        transform:translateY(10px);
+        transform:translateY(12px);
     }
-
     to{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
-
-/* Header */
-
+/* ===========================
+   HEADER
+=========================== */
 
 .page-header{
-
-    background:
-    linear-gradient(135deg,#2563eb,#4f46e5);
-
+    background:linear-gradient(135deg,#111827,#2563eb);
+    border-radius:22px;
     padding:30px;
-
-    border-radius:25px;
-
-    color:white;
-
+    color:#fff;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
+    margin-bottom:25px;
+    box-shadow:0 15px 35px rgba(37,99,235,.25);
 }
 
+.page-header h2{
+    font-weight:700;
+    margin-bottom:10px;
+}
 
 .page-header p{
-
     color:rgba(255,255,255,.8);
-
+    margin:0;
 }
-
 
 .header-icon{
-
     width:75px;
-
     height:75px;
-
-    border-radius:22px;
-
+    border-radius:20px;
     background:rgba(255,255,255,.15);
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    font-size:35px;
-
+    font-size:34px;
+    color:#fff;
 }
 
-
-
-/* Card */
-
+/* ===========================
+   CARD
+=========================== */
 
 .subject-card{
-
-    background:white;
-
-    border-radius:25px;
-
+    background:#fff;
+    border-radius:22px;
     overflow:hidden;
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.08);
-
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
-
-
 
 .subject-card-header{
-
-    padding:25px;
-
-    background:#f8fafc;
-
+    background:linear-gradient(135deg,#111827,#2563eb);
+    color:#fff;
+    padding:22px 25px;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    border-bottom:1px solid #e5e7eb;
-
 }
 
+.subject-card-header h4{
+    margin-bottom:5px;
+    font-weight:700;
+}
 
 .subject-card-header small{
-
-    color:#64748b;
-
+    color:rgba(255,255,255,.75);
 }
-
-
 
 .subject-badge{
-
-    background:#2563eb;
-
-    color:white;
-
+    background:rgba(255,255,255,.18);
     padding:8px 18px;
-
-    border-radius:50px;
-
-    font-size:14px;
-
+    border-radius:30px;
+    color:#fff;
+    font-weight:600;
 }
 
-
-
-
-/* Table */
-
+/* ===========================
+   TABLE
+=========================== */
 
 .modern-table{
-
-    border-collapse:separate;
-
-    border-spacing:0 12px;
-
+    margin-bottom:0;
 }
 
-
+.modern-table thead{
+    background:#f8fafc;
+}
 
 .modern-table thead th{
-
-    border:0;
-
+    border:none;
     color:#64748b;
-
-    font-size:14px;
-
+    padding:18px;
+    font-size:13px;
     text-transform:uppercase;
-
+    font-weight:700;
 }
 
-
+.modern-table tbody td{
+    padding:18px;
+    vertical-align:middle;
+    border-top:1px solid #eef2f7;
+}
 
 .modern-table tbody tr{
-
-    background:#fff;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.05);
-
     transition:.3s;
-
 }
-
 
 .modern-table tbody tr:hover{
-
-    transform:translateY(-3px);
-
+    background:#f8fafc;
 }
 
-
-.modern-table td{
-
-    padding:18px;
-
-    border:0;
-
-}
-
-
+/* ===========================
+   NUMBER
+=========================== */
 
 .number-box{
-
-    width:35px;
-
-    height:35px;
-
+    width:38px;
+    height:38px;
     border-radius:12px;
-
     background:#dbeafe;
-
     color:#2563eb;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-weight:700;
-
 }
 
-
-
+/* ===========================
+   SUBJECT
+=========================== */
 
 .subject-info{
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
 }
-
-
 
 .subject-icon{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:12px;
-
-    background:#ede9fe;
-
-    color:#7c3aed;
-
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    color:#fff;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
+    font-size:18px;
 }
 
-
-
+/* ===========================
+   TEACHER
+=========================== */
 
 .teacher-info{
-
     display:flex;
-
     align-items:center;
-
-    gap:10px;
-
+    gap:12px;
 }
-
-
 
 .teacher-avatar{
-
-    width:40px;
-
-    height:40px;
-
+    width:42px;
+    height:42px;
     border-radius:50%;
-
     background:linear-gradient(135deg,#10b981,#059669);
-
-    color:white;
-
+    color:#fff;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    font-weight:bold;
-
+    font-weight:700;
 }
 
+.teacher-info span{
+    font-weight:600;
+}
 
+/* ===========================
+   BADGES
+=========================== */
 
 .info-badge{
-
-    padding:8px 14px;
-
-    border-radius:50px;
-
-    font-size:13px;
-
     display:inline-flex;
-
-    gap:5px;
-
     align-items:center;
-
+    gap:6px;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
 }
-
-
 
 .class-badge{
-
     background:#dbeafe;
-
-    color:#2563eb;
-
+    color:#1d4ed8;
 }
-
-
 
 .section-badge{
-
     background:#dcfce7;
-
-    color:#16a34a;
-
+    color:#15803d;
 }
 
-
-
-/* Empty */
-
+/* ===========================
+   EMPTY
+=========================== */
 
 .empty-box{
-
+    padding:70px 20px;
     text-align:center;
-
-    padding:50px;
-
     color:#64748b;
-
 }
-
 
 .empty-box i{
-
-    font-size:55px;
-
-    color:#94a3b8;
-
+    font-size:60px;
+    color:#cbd5e1;
+    margin-bottom:20px;
 }
 
+.empty-box h5{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.page-header{
+    flex-direction:column;
+    text-align:center;
+    gap:20px;
+}
+
+.subject-card-header{
+    flex-direction:column;
+    gap:15px;
+    text-align:center;
+}
+
+.header-icon{
+    width:65px;
+    height:65px;
+    font-size:28px;
+}
+
+}
 
 </style>
 

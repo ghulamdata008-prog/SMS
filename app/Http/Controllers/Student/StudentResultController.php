@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Mark;
+use App\Models\ExamSubmission;
 
 class StudentResultController extends Controller
 {
@@ -12,6 +13,7 @@ class StudentResultController extends Controller
     {
         $student = Student::where('user_id', auth()->id())->firstOrFail();
 
+        // Manual Subject Results
         $marks = Mark::with([
             'subject',
             'teacher'
@@ -19,6 +21,12 @@ class StudentResultController extends Controller
         ->where('student_id', $student->id)
         ->get();
 
+        // Online Exam Results
+       $examResults = ExamSubmission::with('exam')
+    ->where('student_id', $student->id)
+    ->whereNotNull('obtained_marks')
+    ->latest()
+    ->get();
         $totalMarks = $marks->sum('total_marks');
         $obtainedMarks = $marks->sum('obtained_marks');
 
@@ -44,6 +52,7 @@ class StudentResultController extends Controller
             'student.results.index',
             compact(
                 'marks',
+                'examResults',
                 'totalMarks',
                 'obtainedMarks',
                 'percentage',

@@ -2,11 +2,7 @@
 
     <div class="container-fluid">
 
-        <!-- Sidebar Toggle
-        <button class="sidebar-toggle-btn" id="sidebarToggle">
-            <i class="bi bi-list"></i>
-        </button> -->
-
+        
         <!-- Search -->
 <form class="d-none d-lg-flex ms-4 flex-grow-1 position-relative">
 
@@ -32,20 +28,7 @@
 
 
 </form>
-        <!-- <form class="d-none d-lg-flex ms-4 flex-grow-1">
-
-            <div class="premium-search">
-
-                <i class="bi bi-search"></i>
-
-                <input
-                    type="search"
-                    placeholder="Search students, teachers..."
-                    aria-label="Search">
-
-            </div>
-
-        </form> -->
+        
 
 <!-- Notification -->
 <li class="nav-item dropdown me-3">

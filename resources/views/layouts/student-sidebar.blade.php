@@ -14,8 +14,8 @@
     </div>
 
     <!-- Menu -->
-
-    <ul class="student-menu">
+<div class="student-menu">
+    <ul>
 
         <li>
             <a href="{{ route('student.dashboard') }}"
@@ -49,7 +49,15 @@
 
             </a>
         </li>
+<li class="nav-item">
+    <a href="{{ route('student.exams.index') }}"
+       class="nav-link {{ request()->routeIs('student.exams.*') ? 'active' : '' }}">
 
+        <i class="bi bi-journal-check"></i>
+
+        <span>Online Exams</span>
+    </a>
+</li>
         <li>
             <a href="{{ route('student.results') }}"
                class="{{ request()->routeIs('student.results') ? 'active' : '' }}">
@@ -61,16 +69,7 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('student.profile') }}"
-               class="{{ request()->routeIs('student.profile') ? 'active' : '' }}">
-
-                <i class="bi bi-person-circle"></i>
-
-                <span>My Profile</span>
-
-            </a>
-        </li>
+       
 <li class="nav-item">
     <a href="{{ route('student.fees.index') }}"
        class="nav-link {{ request()->routeIs('student.fees.*') ? 'active' : '' }}">
@@ -92,273 +91,278 @@
 
     </a>
 </li>
-    </ul>
+ <li>
+            <a href="{{ route('student.profile') }}"
+               class="{{ request()->routeIs('student.profile') ? 'active' : '' }}">
 
+                <i class="bi bi-person-circle"></i>
+
+                <span>My Profile</span>
+
+            </a>
+        </li>
+    </ul>
+</div>
     <!-- Logout -->
 
-    <div class="student-logout">
+   <div class="student-logout">
 
-        <form method="POST" action="{{ route('logout') }}">
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
 
-            @csrf
+        <button type="submit" class="logout-button">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </button>
 
-            <button type="submit" class="logout-button">
+    </form>
 
-                <i class="bi bi-box-arrow-right"></i>
-
-                <span>Logout</span>
-
-            </button>
-
-        </form>
-
-    </div>
+</div>
 
 </div>
 
 
 
 <style>
-
+/* =====================================================
+   STUDENT SIDEBAR - FINAL ALIGNED VERSION
+   Ready to Paste
+===================================================== */
 
 .student-sidebar{
-
     position:fixed;
     top:0;
     left:0;
-
     width:280px;
     height:100vh;
-
-    background:linear-gradient(180deg,#0f172a,#1e3a8a);
 
     display:flex;
     flex-direction:column;
 
+    background:linear-gradient(180deg,#0f172a 0%,#1e3a8a 100%);
     color:#fff;
 
-    overflow-y:auto;
-
+    overflow:hidden;
     z-index:1000;
 
-    padding:20px;
-
-    box-shadow:10px 0 35px rgba(0,0,0,.25);
-
+    box-shadow:15px 0 35px rgba(15,23,42,.18);
 }
 
-.student-sidebar::-webkit-scrollbar{
-
-    width:6px;
-
-}
-
-.student-sidebar::-webkit-scrollbar-thumb{
-
-    background:#3b82f6;
-    border-radius:20px;
-
-}
-
-/* Header */
+/* HEADER */
 
 .student-sidebar-header{
+    flex-shrink:0;
+
+    padding:28px 20px 24px;
 
     text-align:center;
 
-    padding-bottom:28px;
-
-    margin-bottom:25px;
-
-    border-bottom:1px solid rgba(255,255,255,.12);
-
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .student-logo{
-
-    width:82px;
-    height:82px;
-
+    width:80px;
+    height:80px;
     margin:auto;
 
-    border-radius:24px;
+    border-radius:22px;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
-    background:linear-gradient(135deg,#3b82f6,#60a5fa);
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
 
-    font-size:38px;
+    font-size:36px;
+    color:#fff;
 
-    box-shadow:0 20px 35px rgba(59,130,246,.35);
-
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
 }
 
 .student-sidebar-header h4{
-
     margin-top:18px;
-    margin-bottom:6px;
+    margin-bottom:4px;
 
-    font-size:24px;
-
+    font-size:23px;
     font-weight:800;
-
+    letter-spacing:.4px;
 }
 
 .student-sidebar-header small{
-
     color:#cbd5e1;
-
-    font-size:14px;
-
+    font-size:13px;
 }
 
-/* Menu */
+/* MENU AREA */
 
 .student-menu{
     flex:1;
+    min-height:0;
+
     overflow-y:auto;
-    padding-right:5px;
+    overflow-x:hidden;
+
+    margin:0;
+    padding:18px 16px 110px; /* bottom space for logout */
+
+    list-style:none;
 }
+
+.student-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.student-menu::-webkit-scrollbar-thumb{
+    background:#3b82f6;
+    border-radius:20px;
+}
+
 .student-menu li{
-
     margin-bottom:10px;
-
 }
 
-.student-menu a{
+/* LINKS */
 
+.student-menu a,
+.student-menu .nav-link{
     display:flex;
-
     align-items:center;
+    gap:14px;
 
-    gap:15px;
+    width:100%;
 
+    padding:14px 16px;
+
+    color:#dbeafe;
     text-decoration:none;
-
-    color:#e2e8f0;
-
-    padding:15px 18px;
 
     border-radius:16px;
 
+    font-size:15px;
     font-weight:600;
 
-    transition:.35s;
+    position:relative;
 
+    transition:all .25s ease;
 }
 
-.student-menu a i{
-
-    width:24px;
-
+.student-menu a i,
+.student-menu .nav-link i{
+    width:22px;
     text-align:center;
-
-    font-size:20px;
-
+    font-size:18px;
+    flex-shrink:0;
 }
 
-.student-menu a:hover{
+.student-menu a span,
+.student-menu .nav-link span{
+    flex:1;
+    line-height:1.2;
+}
 
-    background:rgba(255,255,255,.10);
+/* HOVER */
 
+.student-menu a:hover,
+.student-menu .nav-link:hover{
+    background:rgba(255,255,255,.08);
     color:#fff;
-
-    transform:translateX(6px);
-
+    transform:translateX(4px);
 }
 
-.student-menu a.active{
+/* ACTIVE */
 
+.student-menu a.active,
+.student-menu .nav-link.active{
     background:linear-gradient(135deg,#2563eb,#3b82f6);
-
     color:#fff;
 
-    box-shadow:0 12px 25px rgba(37,99,235,.35);
-
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
 }
 
-/* Logout */
+.student-menu a.active::before,
+.student-menu .nav-link.active::before{
+    content:"";
+
+    position:absolute;
+
+    left:-16px;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:4px;
+    height:34px;
+
+    border-radius:10px;
+
+    background:#fff;
+}
+
+/* LOGOUT SECTION */
 
 .student-logout{
-    margin-top:auto;
-    position:sticky;
-    bottom:0;
-    background:linear-gradient(180deg,#0f172a,#1e3a8a);
-    padding-top:20px;
+    flex-shrink:0;
+
+    padding:16px;
+
+    background:#162447;
+
+    border-top:1px solid rgba(255,255,255,.08);
 }
 
 .logout-button{
-
     width:100%;
+    height:54px;
 
     border:none;
 
     border-radius:16px;
 
-    padding:15px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:12px;
-
-    font-size:16px;
-
-    font-weight:700;
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
     color:#fff;
 
-    background:linear-gradient(135deg,#ef4444,#dc2626);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
 
-    transition:.35s;
+    font-size:15px;
+    font-weight:700;
 
+    cursor:pointer;
+
+    transition:all .25s ease;
 }
 
 .logout-button i{
-
-    font-size:20px;
-
+    font-size:18px;
 }
 
 .logout-button:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:0 15px 30px rgba(239,68,68,.35);
-
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(239,68,68,.35);
 }
 
-/* Responsive */
+/* RESPONSIVE */
 
-@media(max-width:991px){
+@media (max-width:991px){
 
     .student-sidebar{
-
         width:260px;
-
     }
 
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
 
     .student-sidebar{
-
         transform:translateX(-100%);
-
+        transition:transform .3s ease;
     }
 
     .student-sidebar.show{
-
         transform:translateX(0);
-
     }
 
 }
-
 </style>

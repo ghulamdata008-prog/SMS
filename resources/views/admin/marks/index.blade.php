@@ -100,7 +100,7 @@
                                     <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3"
                                          style="width:45px;height:45px;">
 
-                                        {{ strtoupper(substr($mark->student->name,0,1)) }}
+                                       {{ strtoupper(substr($mark->student->name ?? 'D',0,1)) }}
 
                                     </div>
 
@@ -108,8 +108,7 @@
 
                                         <h6 class="mb-0 fw-semibold">
 
-                                            {{ $mark->student->name }}
-
+                                           {{ $mark->student->name ?? 'Deleted Student' }}
                                         </h6>
 
                                         <small class="text-muted">
@@ -187,14 +186,15 @@
 
                                     </a>
 
-                                    <a href="{{ route('admin.marks.result',$mark->student->id) }}"
-                                       class="btn btn-success btn-sm rounded-pill px-3">
+                                   @if($mark->student)
+<a href="{{ route('admin.marks.result',$mark->student->id) }}"
+   class="btn btn-success btn-sm rounded-pill px-3">
 
-                                        <i class="bi bi-bar-chart-line me-1"></i>
+    <i class="bi bi-bar-chart-line me-1"></i>
+    Result
 
-                                        Result
-
-                                    </a>
+</a>
+@endif
 
                                     <form action="{{ route('admin.marks.destroy',$mark) }}"
                                           method="POST"

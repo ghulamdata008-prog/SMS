@@ -45,6 +45,7 @@ $request->validate([
     'name'=>'required|string|max:255',
     'email'=>'required|email|unique:users,email',
     'password'=>'required|min:8',
+    'roll_no' => 'required|string|max:50|unique:students,roll_no',
     'phone'=>'nullable|string|max:20',
     'class_id'=>'required|exists:school_classes,id',
     'section_id'=>'required|exists:sections,id',
@@ -66,6 +67,7 @@ $user = User::create([
     'name'=>$request->name,
     'email'=>$request->email,
     'password'=>Hash::make($request->password),
+     'role'     => 'student',
 ]);
 
 
@@ -78,6 +80,8 @@ $student = Student::create([
     'user_id'=>$user->id,
     'name'=>$request->name,
     'email'=>$request->email,
+    'roll_no' => $request->roll_no,
+
     'phone'=>$request->phone,
     'class_id'=>$request->class_id,
     'section_id'=>$request->section_id,
@@ -128,6 +132,7 @@ return redirect()
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:students,email,' . $student->id,
         'phone' => 'nullable|string|max:20',
+        'roll_no' => 'required|string|max:50|unique:students,roll_no,' . $student->id,
         'class_id' => 'required|exists:school_classes,id',
         'section_id' => 'required|exists:sections,id',
         'address' => 'nullable|string',
@@ -142,15 +147,20 @@ return redirect()
     }
 
     $student->update([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'class_id' => $request->class_id,
-        'section_id' => $request->section_id,
-        'address' => $request->address,
-        'profile_image' => $image,
-    ]);
+    'name' => $request->name,
+    'email' => $request->email,
+    'roll_no' => $request->roll_no,
+    'phone' => $request->phone,
+    'class_id' => $request->class_id,
+    'section_id' => $request->section_id,
+    'address' => $request->address,
+    'profile_image' => $image,
+]);
 
+$student->user->update([
+    'name' => $request->name,
+    'email' => $request->email,
+]);
     return redirect()
         ->route('admin.students.index')
         ->with('success', 'Student Updated Successfully.');
@@ -160,13 +170,17 @@ return redirect()
      * Delete student
      */
     public function destroy(Student $student)
-    {
-        $student->delete();
-
-        return redirect()
-            ->route('admin.students.index')
-            ->with('success', 'Student deleted successfully.');
+{
+    if ($student->user) {
+        $student->user->delete();
     }
+
+    $student->delete();
+
+    return redirect()
+        ->route('admin.students.index')
+        ->with('success', 'Student deleted successfully.');
+}
 
     public function getSections($classId)
 {

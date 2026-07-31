@@ -103,7 +103,7 @@
                                     <div class="rounded-circle bg-primary text-white fw-bold d-flex justify-content-center align-items-center me-3"
                                          style="width:45px;height:45px;">
 
-                                        {{ strtoupper(substr($fee->student->name,0,1)) }}
+{{ strtoupper(substr($fee->student->name ?? 'D',0,1)) }}
 
                                     </div>
 
@@ -111,7 +111,7 @@
 
                                         <div class="fw-semibold">
 
-                                            {{ $fee->student->name }}
+                                           {{ $fee->student->name ?? 'Deleted Student' }}
 
                                         </div>
 

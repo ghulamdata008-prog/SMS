@@ -80,36 +80,17 @@
 
         </div>
 
-
-
-
-
-
-
-        <div class="table-responsive">
-
-
-            <table class="table result-table align-middle mb-0">
-
-
-
-                <thead>
-
-
-                    <tr>
-
-
-                        <th>
+<div class="table-responsive">
+ <table class="table result-table align-middle mb-0">
+ <thead>
+ <tr>
+ <th>
                             Student
                         </th>
-
-
-                        <th>
+ <th>
                             Subject
                         </th>
-
-
-                        <th>
+<th>
                             Marks
                         </th>
 
@@ -119,139 +100,60 @@
 
                 </thead>
 
+  <tbody>
 
+ @foreach($marks as $mark)
+ <tr>
 
+  <td>
 
+ <div class="student-box">
 
+ <div class="student-avatar">
 
+   {{ strtoupper(substr($mark->student->name ?? 'D',0,1)) }}
+ </div>
 
-                <tbody>
 
+ <span>
 
+ {{ $mark->student->name ?? 'Deleted Student' }}
 
-                @foreach($marks as $mark)
 
+ </span>
 
+ </div>
 
-                    <tr>
+</td>
+ <td>
+  <span class="subject-badge">
 
+ <i class="bi bi-book"></i>
 
+  {{$mark->subject->name}}
+ </span>
 
-                        <td>
+ </td>
 
+<td>
 
-                            <div class="student-box">
+  <span class="marks-badge">
 
+ {{ $mark->obtained_marks }}
 
-                                <div class="student-avatar">
+ </span>
+ </td>
 
+ </tr>
 
-                                    {{ strtoupper(substr($mark->student->name,0,1)) }}
+ @endforeach
 
-
-                                </div>
-
-
-
-                                <span>
-
-
-                                    {{$mark->student->name}}
-
-
-                                </span>
-
-
-
-                            </div>
-
-
-                        </td>
-
-
-
-
-
-
-
-                        <td>
-
-
-                            <span class="subject-badge">
-
-
-                                <i class="bi bi-book"></i>
-
-
-                                {{$mark->subject->name}}
-
-
-                            </span>
-
-
-                        </td>
-
-
-
-
-
-
-
-                        <td>
-
-
-                            <span class="marks-badge">
-
-
-                                {{ $mark->obtained_marks }}
-
-
-                            </span>
-
-
-                        </td>
-
-
-
-
-
-                    </tr>
-
-
-
-
-
-                @endforeach
-
-
-
-
-                </tbody>
-
-
-
-
-            </table>
-
-
-
-        </div>
-
-
-
-    </div>
-
-
-
+  </tbody>
+</table>
+ </div>
+ </div>
 
 </div>
-
-
-
-
-
-
-
 <style>
 
 
@@ -264,9 +166,6 @@
     overflow:hidden;
 
 }
-
-
-
 
 /* SAME ADMIN THEME */
 
@@ -285,10 +184,6 @@
     gap:15px;
 
 }
-
-
-
-
 .header-icon{
 
 
@@ -310,29 +205,17 @@
 
 
 }
-
-
-
-
-
 .result-table{
 
     width:100%;
 
 }
 
-
-
-
 .result-table thead{
 
     background:#f8fafc;
 
 }
-
-
-
-
 .result-table th{
 
 
@@ -348,11 +231,6 @@
 
 
 }
-
-
-
-
-
 .result-table td{
 
 
@@ -362,11 +240,6 @@
 
 
 }
-
-
-
-
-
 .result-table tbody tr{
 
 
@@ -374,9 +247,6 @@
 
 
 }
-
-
-
 .result-table tbody tr:hover{
 
 
@@ -386,11 +256,6 @@
 
 
 }
-
-
-
-
-
 
 /* Student */
 
@@ -406,9 +271,6 @@
 
 
 }
-
-
-
 .student-avatar{
 
 
@@ -436,10 +298,6 @@
 
 
 }
-
-
-
-
 .student-box span{
 
 
@@ -447,14 +305,7 @@
 
 
 }
-
-
-
-
-
 /* Subject */
-
-
 .subject-badge{
 
 
@@ -473,15 +324,7 @@
 
 
 }
-
-
-
-
-
-
 /* Marks */
-
-
 .marks-badge{
 
 
@@ -504,13 +347,5 @@
 
 
 }
-
-
-
-
-
 </style>
-
-
-
 @endsection

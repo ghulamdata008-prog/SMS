@@ -26,6 +26,8 @@ use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\AttendanceController as AdminAttendanceController;
 use App\Http\Controllers\Admin\StripePaymentController;
+use App\Http\Controllers\Admin\AdminExamController;
+use App\Http\Controllers\Admin\ExamSubmissionController as AdminExamSubmissionController;
 use App\Http\Controllers\Teacher\DashboardController as TeacherDashboardController;
 use App\Http\Controllers\Teacher\Auth\LoginController;
 use App\Http\Controllers\Teacher\MyClassController;
@@ -34,6 +36,10 @@ use App\Http\Controllers\Teacher\ProfileController as TeacherProfileController;
 use App\Http\Controllers\Teacher\SubjectController as TeacherSubjectController;
 use App\Http\Controllers\Teacher\MarkController as TeacherMarkController;
 use App\Http\Controllers\Teacher\StudentController as TeacherStudentController;
+use App\Http\Controllers\Teacher\ExamController;
+use App\Http\Controllers\Teacher\ExamQuestionController;
+use App\Http\Controllers\Teacher\ExamSubmissionController as TeacherExamSubmissionController;
+use App\Http\Controllers\Teacher\ResultController;
 use App\Http\Controllers\Student\StudentSubjectController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\Student\StudentResultController;
@@ -44,23 +50,14 @@ use App\Http\Controllers\Student\StudentPaymentController;
 use App\Http\Controllers\Student\StudentStripeController;
 use App\Http\Controllers\Student\StudentPayPalController;
 use App\Http\Controllers\Student\StudentMonnifyController;
+use App\Http\Controllers\Student\StudentExamController;
+use App\Http\Controllers\Student\ExamSubmissionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-
-
-
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::middleware(['auth'])->group(function () {
-
-    
 Route::get('/', function () {
-    return redirect('/login');
+    return view('welcome');
 });
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
@@ -68,12 +65,6 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest');
-// Route::get('/login',[AuthenticatedSessionController::class,'create'])
-//     ->name('login');
-
-// Route::post('/login',[AuthenticatedSessionController::class,'store']);
-// });
-
 Route::post('/logout', [AuthenticatedSessionController::class,'destroy'])
     ->name('logout');
 Route::middleware(['auth', 'role:admin'])
@@ -90,58 +81,51 @@ Route::get('/global-search',
     Route::get('/attendance',
 [AdminAttendanceController::class,'index'])
 ->name('attendance.index');
-
-
+Route::get('/exams',
+    [AdminExamController::class,'index'])
+    ->name('exams.index');
+Route::get('/exams/{exam}',
+    [AdminExamController::class,'show'])
+    ->name('exams.show');
+Route::patch('/exams/{exam}/approve',
+    [AdminExamController::class,'approve'])
+    ->name('exams.approve');
+Route::patch('/exams/{exam}/reject',
+    [AdminExamController::class,'reject'])
+    ->name('exams.reject');
 Route::get('/marks',
     [MarkController::class,'index'])
     ->name('marks.index');
-
-
-
-    Route::get('/marks/{mark}/edit',
+ Route::get('/marks/{mark}/edit',
     [MarkController::class,'edit'])
     ->name('marks.edit');
-
-
-
-    Route::put('/marks/{mark}',
+ Route::put('/marks/{mark}',
     [MarkController::class,'update'])
     ->name('marks.update');
-
-
-
-    Route::delete('/marks/{mark}',
+ Route::delete('/marks/{mark}',
     [MarkController::class,'destroy'])
     ->name('marks.destroy');
-
-
-
-    Route::get('/marks/result/{student}',
+ Route::get('/marks/result/{student}',
     [MarkController::class,'result'])
     ->name('marks.result');
+Route::get('/online-results', [AdminExamSubmissionController::class, 'index'])
+    ->name('online-results.index');
 
-
+Route::get('/online-results/{submission}', [AdminExamSubmissionController::class, 'show'])
+    ->name('online-results.show');
 Route::get('/reports',
     [ReportController::class,'index']
 )
 ->name('reports.index');
-
-
-
 Route::get('/reports/students',
     [ReportController::class,'students']
 )
 ->name('reports.students');
 
-
-
 Route::get('/reports/attendance',
     [ReportController::class,'attendance']
 )
 ->name('reports.attendance');
-
-
-
 Route::get('/reports/marks',
     [ReportController::class,'marks']
 )
@@ -153,15 +137,11 @@ Route::get(
 )
 ->name('settings.index');
 
-
-
 Route::post(
 '/settings',
 [SettingController::class,'update']
 )
 ->name('settings.update');
-
-
 Route::get('/get-sections/{class}', [StudentController::class,'getSections']);
         Route::resource('students', StudentController::class);
         Route::resource('classes', SchoolClassController::class);
@@ -184,9 +164,7 @@ Route::get('/get-sections/{class}', [StudentController::class,'getSections']);
             [NotificationController::class,'destroyAll'])
             ->name('notifications.destroyAll');
 
-            // Route::get('/profile', [AdminProfileController::class,'index'])->name('profile');
-
-            Route::get('/profile', [AdminProfileController::class,'index'])
+             Route::get('/profile', [AdminProfileController::class,'index'])
     ->name('profile');
 
 Route::get('/profile/edit', [AdminProfileController::class,'edit'])
@@ -207,23 +185,17 @@ Route::get(
 )
 ->name('teacher.assignment.index');
 
-
-
 Route::get(
 '/teacher-assignment/create',
 [TeacherAssignmentController::class,'create']
 )
 ->name('teacher.assignment.create');
 
-
-
 Route::post(
 '/teacher-assignment',
 [TeacherAssignmentController::class,'store']
 )
 ->name('teacher.assignment.store');
-
-
 
 Route::delete(
 '/teacher-assignment/{id}',
@@ -334,16 +306,10 @@ Route::post('/payment-gateways/monnify',
     'payment-gateways/{paymentGateway}',
     [PaymentGatewayController::class,'show']
 )->name('payment-gateways.show');
-// Route::get('/profile/edit', [AdminProfileController::class,'edit'])->name('profile.edit');
-// Route::get('/profile/password', [AdminProfileController::class,'password'])->name('profile.password');
-//  Route::put('/profile/password', [AdminProfileController::class, 'updatePassword'])
-//     ->name('profile.password.update');
+
     });
 
-// Teacher Login Routes (Outside Middleware)
-// Route::get('/login', [LoginController::class, 'showLogin'])->name('teacher.login');
-// Route::post('/login', [LoginController::class, 'login'])->name('teacher.login.submit');
-// Route::post('/logout', [LoginController::class, 'logout'])->name('teacher.logout');
+
 Route::get('/teacher/login',[TeacherAuthController::class,'login'])
     ->name('teacher.login');
 
@@ -369,7 +335,42 @@ Route::get('/attendance/view', [AttendanceController::class, 'view'])
     ->name('attendance.view');
 Route::post('/attendance', [AttendanceController::class,'store'])
     ->name('attendance.store');
+ Route::resource('exams', ExamController::class);
+ Route::get(
+    '/exams/{exam}/questions',
+    [ExamQuestionController::class,'index']
+)->name('exams.questions');
 
+Route::get(
+    '/exams/{exam}/questions/create',
+    [ExamQuestionController::class,'create']
+)->name('exams.questions.create');
+
+Route::post(
+    '/exams/{exam}/questions',
+    [ExamQuestionController::class,'store']
+)->name('exams.questions.store');
+
+Route::delete(
+    '/questions/{question}',
+    [ExamQuestionController::class,'destroy']
+)->name('questions.destroy');
+Route::get(
+    '/exam-submissions',
+    [TeacherExamSubmissionController::class, 'index']
+)->name('exam.submissions');
+Route::get(
+    '/exam-submissions',
+    [TeacherExamSubmissionController::class, 'index']
+)->name('exam-submissions.index');
+Route::get(
+    '/exam-submissions/{submission}',
+    [TeacherExamSubmissionController::class, 'show']
+)->name('exam-submissions.show');
+Route::post(
+    '/exam-submissions/{submission}/publish',
+    [TeacherExamSubmissionController::class, 'publish']
+)->name('exam-submissions.publish');
 Route::get('/marks',[TeacherMarkController::class,'index'])
         ->name('marks.index');
 
@@ -387,8 +388,14 @@ Route::get('/marks',[TeacherMarkController::class,'index'])
 
     Route::delete('/marks/{mark}',[TeacherMarkController::class,'destroy'])
         ->name('marks.destroy');
+Route::get('/marks/create/{exam}',
+    [TeacherMarkController::class,'create'])
+    ->name('marks.create');
+ Route::get('/results', [ResultController::class,'index'])
+            ->name('results.index');
 
-
+        Route::get('/results/{submission}', [ResultController::class,'show'])
+            ->name('results.show');
         Route::get(
     '/subjects',
     [TeacherSubjectController::class, 'index']
@@ -486,11 +493,23 @@ Route::get('/payment-history', [StudentFeeController::class, 'history'])
     // [StudentPaymentController::class,'success'])
     // ->name('payment.success');
 
-  Route::get('/fees/history',
-        [StudentFeeController::class,'history'])
-        ->name('fees.history');
+//   Route::get('/fees/history',
+//         [StudentFeeController::class,'history'])
+//         ->name('fees.history');
          Route::delete('/payment/{payment}', [StudentPaymentController::class, 'destroy'])
         ->name('payment.delete');
+
+        Route::get('/exams',
+    [StudentExamController::class,'index'])
+    ->name('exams.index');
+
+Route::get('/exams/{exam}',
+    [StudentExamController::class,'show'])
+    ->name('exams.show');
+
+Route::post('/exams/{exam}/submit',
+    [StudentExamController::class,'submit'])
+    ->name('exams.submit');
     Route::get('/profile', [StudentProfileController::class, 'index'])
     ->name('profile');
 

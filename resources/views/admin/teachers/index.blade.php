@@ -180,23 +180,7 @@
 
                                 </form>
 
-                                <!-- <form
-                                    action="{{ route('admin.teachers.destroy',$teacher) }}"
-                                    method="POST"
-                                    class="delete-form m-0">
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit"
-                                            class="action-btn delete">
-
-                                        <i class="bi bi-trash-fill"></i>
-
-                                    </button>
-
-                                </form> -->
-
+                               
                             </div>
 
                         </td>

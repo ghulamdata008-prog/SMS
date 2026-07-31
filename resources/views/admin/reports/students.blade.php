@@ -8,10 +8,7 @@
 
 
 <div class="container-fluid">
-
-
-
-    <!-- Header -->
+<!-- Header -->
 
     <div class="mb-4">
 
@@ -32,75 +29,33 @@
 
     </div>
 
+<!-- Report Card -->
+ <div class="student-report-card shadow-lg">
 
+<div class="report-header">
+<div class="header-icon">
+  <i class="bi bi-people-fill"></i>
 
-
-
-
-    <!-- Report Card -->
-
-
-    <div class="student-report-card shadow-lg">
-
-
-
-        <div class="report-header">
-
-
-            <div class="header-icon">
-
-
-                <i class="bi bi-people-fill"></i>
-
-
-            </div>
-
-
-
-            <div>
-
-
-                <h5 class="mb-1">
+</div>
+<div>
+ <h5 class="mb-1">
 
                     Students List
 
-                </h5>
-
-
-                <small>
+                </h5> <small>
 
                     Registered students records
 
                 </small>
 
 
-            </div>
+      </div>
+ </div>
+ <div class="table-responsive"> <table class="table student-table align-middle mb-0">
+ <thead>
+  <tr>
 
-
-
-        </div>
-
-
-
-
-
-
-
-
-        <div class="table-responsive">
-
-
-            <table class="table student-table align-middle mb-0">
-
-
-
-                <thead>
-
-
-                    <tr>
-
-
-                        <th>
+ <th>
                             Name
                         </th>
 
@@ -124,12 +79,7 @@
 
 
                 </thead>
-
-
-
-
-
-                <tbody>
+<tbody>
 
 
                 @foreach($students as $student)
@@ -137,10 +87,7 @@
 
 
                     <tr>
-
-
-
-                        <td>
+ <td>
 
 
                             <div class="student-info">
@@ -169,13 +116,7 @@
 
 
                         </td>
-
-
-
-
-
-
-                        <td>
+ <td>
 
 
                             <span class="email">
@@ -188,13 +129,7 @@
 
 
                         </td>
-
-
-
-
-
-
-                        <td>
+ <td>
 
 
                             <span class="class-badge">
@@ -207,14 +142,7 @@
 
 
                         </td>
-
-
-
-
-
-
-
-                        <td>
+  <td>
 
 
                             <span class="section-badge">
@@ -227,48 +155,19 @@
 
 
                         </td>
+                     </tr>
 
+  @endforeach
 
+</tbody>
 
-
-
-                    </tr>
-
-
-
-
-                @endforeach
-
-
-
-
-                </tbody>
-
-
-
-
-            </table>
+</table>
 
 
 
         </div>
-
-
-
-    </div>
-
-
-
-
+ </div>
 </div>
-
-
-
-
-
-
-
-
 <style>
 
 
@@ -283,12 +182,6 @@
 
 
 }
-
-
-
-
-
-
 .report-header{
 
 
@@ -306,10 +199,6 @@
 
 
 }
-
-
-
-
 .header-icon{
 
 
@@ -331,13 +220,6 @@
 
 
 }
-
-
-
-
-
-
-
 .student-table thead{
 
 
@@ -345,10 +227,6 @@
 
 
 }
-
-
-
-
 .student-table th{
 
 
@@ -372,10 +250,6 @@
 
 }
 
-
-
-
-
 .student-table tbody tr{
 
 
@@ -383,9 +257,6 @@
 
 
 }
-
-
-
 .student-table tbody tr:hover{
 
 
@@ -395,13 +266,6 @@
 
 
 }
-
-
-
-
-
-
-
 .student-info{
 
 
@@ -413,10 +277,6 @@
 
 
 }
-
-
-
-
 .student-avatar{
 
 
@@ -444,11 +304,6 @@
 
 
 }
-
-
-
-
-
 .student-info span{
 
 
@@ -456,13 +311,6 @@
 
 
 }
-
-
-
-
-
-
-
 .email{
 
 
@@ -470,12 +318,6 @@
 
 
 }
-
-
-
-
-
-
 .class-badge{
 
 
@@ -494,12 +336,6 @@
 
 
 }
-
-
-
-
-
-
 .section-badge{
 
 
@@ -519,10 +355,6 @@
 
 
 }
-
-
-
-
 </style>
 
 

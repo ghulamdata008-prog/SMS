@@ -90,17 +90,11 @@ class="form-select">
 
 <option>Cash</option>
 
-<option>Bank</option>
+
 
 <option>Stripe</option>
 
-<option>Paypal</option>
 
-<option>Monify</option>
-
-<option>JazzCash</option>
-
-<option>Easypaisa</option>
 
 </select>
 

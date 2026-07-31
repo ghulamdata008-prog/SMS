@@ -14,28 +14,6 @@
     Assign Teacher
 </h3>
 
-
-
-<!-- @if ($errors->any())
-
-<div class="alert alert-danger">
-
-@foreach($errors->all() as $error)
-
-<p class="mb-0">
-    {{ $error }}
-</p>
-
-@endforeach
-
-</div>
-
-@endif -->
-
-
-
-
-
 <div class="card shadow border-0 rounded-4">
 
 

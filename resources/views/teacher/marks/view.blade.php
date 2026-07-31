@@ -105,23 +105,16 @@ All Subjects
 </option>
 
 
-@foreach($assignments as $assignment)
-
+@foreach($marks->unique('subject_id') as $mark)
 
 <option
-
-value="{{ $assignment->subject_id }}"
-
-@selected(request('subject_id') == $assignment->subject_id)
-
+value="{{ $mark->subject_id }}"
+@selected(request('subject_id') == $mark->subject_id)
 >
 
-
-{{ $assignment->subject->name }}
-
+{{ $mark->subject->name }}
 
 </option>
-
 
 @endforeach
 
@@ -474,60 +467,32 @@ Student
 
 
 
-<td>
+<td class="text-center">
 
+    <div class="action-btns">
 
-<a href="{{ route('teacher.marks.edit',$mark->id) }}"
+        <a href="{{ route('teacher.marks.edit',$mark->id) }}"
+           class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil"></i>
+        </a>
 
-class="btn btn-edit btn-sm">
+        <form action="{{ route('teacher.marks.destroy',$mark->id) }}"
+              method="POST"
+              onsubmit="return confirm('Delete this mark?')">
 
+            @csrf
+            @method('DELETE')
 
-<i class="bi bi-pencil"></i>
+            <button type="submit"
+                    class="btn btn-danger btn-sm">
+                <i class="bi bi-trash"></i>
+            </button>
 
-Edit
+        </form>
 
-
-</a>
-
-
-
-
-
-<form
-
-action="{{ route('teacher.marks.destroy',$mark->id) }}"
-
-method="POST"
-
-class="d-inline">
-
-
-@csrf
-
-@method('DELETE')
-
-
-
-<button
-
-onclick="return confirm('Delete this mark?')"
-
-class="btn btn-delete btn-sm">
-
-
-<i class="bi bi-trash"></i>
-
-Delete
-
-
-</button>
-
-
-</form>
-
+    </div>
 
 </td>
-
 
 
 
@@ -603,297 +568,296 @@ No Marks Found
 
 
 .teacher-page{
-
-padding:10px;
-
+    animation:fadeIn .4s ease;
 }
 
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
+/*==========================
+PAGE HEADER
+===========================*/
+
+.page-header{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
+    color:#fff;
+    padding:28px 35px;
+    border-radius:22px;
+    margin-bottom:25px;
+}
 
 .page-header h2{
-
-font-size:30px;
-
+    margin:0;
+    font-size:30px;
+    font-weight:700;
 }
 
+.page-header p{
+    margin-top:6px;
+    margin-bottom:0;
+    color:rgba(255,255,255,.8);
+}
 
+/*==========================
+CARD
+===========================*/
 
 .marks-card{
-
-background:white;
-
-border-radius:25px;
-
-overflow:hidden;
-
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
-
-
 
 .marks-header{
-
-background:linear-gradient(135deg,#111827,#2563eb);
-
-padding:25px;
-
-color:white;
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
+    background:linear-gradient(135deg,#111827,#2563eb);
+    color:#fff;
+    padding:22px 28px;
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
-
-
 
 .header-icon{
-
-height:55px;
-
-width:55px;
-
-border-radius:18px;
-
-background:rgba(255,255,255,.2);
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:25px;
-
+    width:58px;
+    height:58px;
+    border-radius:16px;
+    background:rgba(255,255,255,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
 }
 
+.marks-header h5{
+    margin-bottom:3px;
+}
 
+.marks-header small{
+    color:rgba(255,255,255,.8);
+}
+
+/*==========================
+FILTER
+===========================*/
 
 .filter-box{
-
-background:#f8fafc;
-
-padding:20px;
-
-border-radius:20px;
-
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:22px;
 }
 
-
+.form-label{
+    font-weight:600;
+    margin-bottom:8px;
+}
 
 .premium-input{
-
-border-radius:14px;
-
-padding:12px;
-
+    height:50px;
+    border-radius:12px;
 }
-
-
 
 .filter-btn{
-
-padding:12px;
-
-border-radius:14px;
-
+    height:50px;
+    border-radius:12px;
+    font-weight:600;
 }
 
-
+/*==========================
+TABLE
+===========================*/
 
 .table-wrapper{
-
-border-radius:20px;
-
-overflow:hidden;
-
-border:1px solid #e5e7eb;
-
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    overflow:hidden;
 }
 
-
+.marks-table{
+    margin-bottom:0;
+}
 
 .marks-table thead{
-
-background:#111827;
-
-color:white;
-
+    background:#f8fafc;
 }
 
-
-
-.marks-table th{
-
-padding:18px;
-
-font-size:13px;
-
-text-transform:uppercase;
-
+.marks-table thead th{
+    padding:18px;
+    text-transform:uppercase;
+    font-size:13px;
+    color:#64748b;
+    font-weight:700;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:middle;
 }
 
-
-
-.marks-table td{
-
-padding:16px;
-
+.marks-table tbody td{
+    padding:18px;
+    vertical-align:middle;
+    border-top:1px solid #f1f5f9;
 }
-
-
 
 .marks-table tbody tr:hover{
-
-background:#f8fafc;
-
+    background:#f8fafc;
 }
 
-
-
-.student-box{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-}
-
-
-
-.avatar{
-
-width:42px;
-
-height:42px;
-
-border-radius:50%;
-
-background:linear-gradient(135deg,#2563eb,#60a5fa);
-
-color:white;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-weight:bold;
-
-}
-
-
+/*==========================
+NUMBER
+===========================*/
 
 .number-badge{
-
-background:#dbeafe;
-
-color:#2563eb;
-
-padding:8px 12px;
-
-border-radius:20px;
-
-font-weight:bold;
-
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#dbeafe;
+    color:#2563eb;
+    font-weight:700;
 }
 
+/*==========================
+STUDENT
+===========================*/
 
+.student-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:bold;
+    flex-shrink:0;
+}
+
+.student-box h6{
+    margin:0;
+    font-weight:700;
+}
+
+.student-box small{
+    color:#64748b;
+}
+
+/*==========================
+BADGES
+===========================*/
+
+.class-badge,
+.section-badge,
+.marks-badge,
+.grade{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:80px;
+    padding:8px 14px;
+    border-radius:50px;
+    font-weight:600;
+}
 
 .class-badge{
-
-background:#dcfce7;
-
-color:#15803d;
-
-padding:7px 12px;
-
-border-radius:20px;
-
+    background:#dbeafe;
+    color:#2563eb;
 }
-
-
 
 .section-badge{
-
-background:#fef3c7;
-
-color:#b45309;
-
-padding:7px 12px;
-
-border-radius:20px;
-
+    background:#dcfce7;
+    color:#15803d;
 }
-
-
 
 .marks-badge{
-
-background:#ede9fe;
-
-color:#6d28d9;
-
-padding:8px 14px;
-
-border-radius:20px;
-
-font-weight:700;
-
+    background:#ede9fe;
+    color:#6d28d9;
 }
-
-
 
 .percentage{
-
-font-weight:700;
-
-color:#2563eb;
-
+    font-weight:700;
+    color:#2563eb;
 }
-
-
 
 .grade{
-
-padding:8px 14px;
-
-border-radius:20px;
-
-color:white;
-
-font-weight:700;
-
+    color:#fff;
 }
 
+/*==========================
+ACTION BUTTONS
+===========================*/
 
 
-.btn-edit{
-
-background:#f59e0b;
-
-color:white;
-
-border-radius:10px;
-
+.action-btns{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:nowrap;
 }
 
-
-
-.btn-delete{
-
-background:#ef4444;
-
-color:white;
-
-border-radius:10px;
-
+.action-btns form{
+    margin:0;
+    display:flex;
 }
 
+.action-btns .btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+}
+
+.marks-table td{
+    vertical-align:middle;
+}
+
+.marks-table td:last-child{
+    width:120px;
+    text-align:center;
+}
+/*==========================
+PAGINATION
+===========================*/
+
+.pagination{
+    justify-content:center;
+}
+
+/*==========================
+RESPONSIVE
+===========================*/
+
+@media(max-width:992px){
+
+.table-responsive{
+    overflow-x:auto;
+}
+
+.marks-table{
+    min-width:1100px;
+}
+
+}
 
 </style>
 

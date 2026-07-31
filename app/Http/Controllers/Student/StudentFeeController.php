@@ -63,29 +63,20 @@ class StudentFeeController extends Controller
 
         }
 
-        if($request->payment_method=='PayPal'){
-
-            return redirect()->route('student.paypal.checkout',$payment);
-
-        }
-
-        if($request->payment_method=='Monnify'){
-
-            return redirect()->route('student.monnify.checkout',$payment);
-
-        }
+       
 
         return back();
     }
 
     public function history()
-    {
-        $student = Student::where('user_id', auth()->id())->firstOrFail();
+{
+    $student = \App\Models\Student::where('user_id', auth()->id())->firstOrFail();
 
-        $payments = Payment::where('student_id',$student->id)
-                    ->latest()
-                    ->get();
+    $payments = \App\Models\Payment::with('fee')
+        ->where('student_id', $student->id)
+        ->latest()
+        ->paginate(10);
 
-        return view('student.fees.history',compact('payments'));
-    }
+    return view('student.payment.history', compact('payments'));
+}
 }

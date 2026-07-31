@@ -115,9 +115,39 @@
         </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('teacher.exams.index') }}"
+       class="nav-link {{ request()->routeIs('teacher.exams.*') ? 'active' : '' }}">
 
+        <i class="bi bi-journal-text"></i>
 
+        <span>Exams</span>
 
+    </a>
+</li>
+
+<li class="nav-item">
+
+    <a href="{{ route('teacher.exam-submissions.index') }}"
+       class="nav-link {{ request()->routeIs('teacher.exam-submissions.*') ? 'active' : '' }}">
+
+        <i class="bi bi-clipboard-check"></i>
+
+        <span>Exam Submissions</span>
+
+    </a>
+
+</li>
+<li class="nav-item">
+    <a href="{{ route('teacher.results.index') }}"
+       class="nav-link {{ request()->routeIs('teacher.results.*') ? 'active' : '' }}">
+
+        <i class="bi bi-award-fill me-2"></i>
+
+        <span>Results</span>
+
+    </a>
+</li>
         <li>
 
             <a href="{{ route('teacher.marks.index') }}">
