@@ -1,0 +1,141 @@
+/* ==========================
+   Student Layout
+========================== */
+
+body {
+    margin: 0;
+    background: #f4f7fb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar */
+
+.student-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #1e3a8a;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Main */
+
+.student-main {
+    margin-left: 260px;
+    padding: 30px;
+    min-height: 100vh;
+    background: #f4f7fb;
+}
+
+/* Cards */
+
+.student-card {
+    background: #fff;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Header */
+
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.page-subtitle {
+    color: #64748b;
+}
+
+/* Buttons */
+
+.btn-student {
+    background: #2563eb;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 22px;
+}
+
+.btn-student:hover {
+    background: #1d4ed8;
+    color: #fff;
+}
+
+/* Table */
+
+.table {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #2563eb;
+    color: #fff;
+}
+
+.table th {
+    padding: 16px;
+}
+
+.table td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: #eff6ff;
+}
+
+/* Form */
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .15);
+}
+
+/* Badges */
+
+.badge-success {
+    background: #16a34a;
+}
+
+.badge-danger {
+    background: #dc2626;
+}
+
+.badge-warning {
+    background: #f59e0b;
+}
+
+.badge-primary {
+    background: #2563eb;
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+    .student-sidebar {
+        left: -260px;
+    }
+
+    .student-main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+}
