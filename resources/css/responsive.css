@@ -2,76 +2,185 @@
    Responsive CSS
 =========================================== */
 
-@media (max-width:991px) {
+/* Large Tablet */
+@media (max-width: 991px) {
 
     .sidebar {
-
+        position: fixed;
+        top: 0;
         left: -270px;
-
+        width: 270px;
+        height: 100vh;
+        z-index: 1050;
+        transition: .3s ease;
+        overflow-y: auto;
     }
 
     .sidebar.active {
-
         left: 0;
-
     }
 
     .main {
-
+        width: 100%;
         margin-left: 0;
-
     }
 
     .content {
-
         padding: 20px;
-
     }
 
-}
-
-@media (max-width:768px) {
-
     .navbar-custom {
-
-        padding: 15px;
-
+        padding: 15px 20px;
     }
 
     .dashboard-card {
-
         margin-bottom: 20px;
-
     }
 
-    .content {
+    .table-responsive {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
-        padding: 15px;
-
+    .btn {
+        font-size: 14px;
     }
 
 }
 
-@media (max-width:576px) {
+/* Tablet */
+@media (max-width:768px) {
 
-    .logo {
+    .content {
+        padding: 15px;
+    }
 
-        font-size: 20px;
-
+    .dashboard-card {
+        padding: 18px;
     }
 
     .card-number {
-
-        font-size: 22px;
-
+        font-size: 26px;
     }
 
     .dashboard-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
 
-        width: 55px;
-        height: 55px;
+    .navbar-custom {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width:576px) {
+
+    .content {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .dashboard-card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .card-number {
         font-size: 22px;
+    }
 
+    .card-title {
+        font-size: 14px;
+    }
+
+    .dashboard-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+    .navbar-custom {
+        padding: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .table-responsive {
+        border-radius: 12px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+    }
+
+    .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .modal-dialog {
+        margin: 10px;
+    }
+
+}
+
+/* Small Mobile */
+@media (max-width:400px) {
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .dashboard-card {
+        padding: 12px;
+    }
+
+    .card-number {
+        font-size: 20px;
+    }
+
+    .dashboard-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .content {
+        padding: 10px;
     }
 
 }
